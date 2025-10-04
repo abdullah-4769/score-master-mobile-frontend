@@ -5,6 +5,7 @@ import 'package:scorer/constants/routename.dart';
 import 'package:scorer/widgets/custom_dashboard_container.dart';
 import '../../api/api_controllers/active_schedule_controller.dart';
 import '../../api/api_controllers/session_action_controller.dart';
+import '../../shared_preferences/shared_preferences.dart';
 
 class AdminActiveSession extends StatelessWidget {
   const AdminActiveSession({super.key});
@@ -38,32 +39,34 @@ class AdminActiveSession extends StatelessWidget {
                 width2: 70,
                 height2: 22,
                 height1: 22,
-                onTap: () {
+                onTap: () async {
                   print("[AdminActiveSession] Container tapped for session ID: ${session.id}");
+                  if (session.id != null) {
+                    await SharedPrefServices.saveSessionId(session.id!);
+                    print("[AdminActiveSession] Session ID saved: ${session.id}");
+                  }
                   Get.toNamed(RouteName.adminOverviewOptionScreens);
                 },
-                onTapResume: () {
-                  print("[AdminActiveSession] Resume button tapped for session ID: ${session.id}");
-                  sessionController.resumeSession(session.id ?? 0);
+                onTapResume: sessionController.isSessionActive() ? null : () async {
+                  await handleResume(session, sessionController);
                 },
-                onTapNextPhase: () {
-                  print("[AdminActiveSession] Next Phase button tapped for session ID: ${session.id}");
-                  sessionController.startSession(session.id ?? 0); // Assuming next_phase starts a new phase
+                onTapNextPhase: () async {
+                  await handleNextPhase(session, sessionController);
                 },
                 heading: session.teamTitle ?? "Team Building Workshop",
-                text1: "Phase ${session.totalPhases ?? 1}",
+                text1: "Phase ${sessionController.currentPhaseId.value}",
                 height: 10,
-                text2: "Phase ${session.totalPhases ?? 1}",
+                text2: "Phases: ${sessionController.phases.length}",
                 description: session.description ?? "Team Building Workshop strengthens teamwork through interactive activities.",
                 text3: "resume".tr,
                 text4: "next_phase".tr,
                 icon1: Icons.play_arrow,
                 text5: "${session.totalPlayers ?? 0} Players",
-                text6: "paused".tr,
+                text6: sessionController.isSessionActive() ? "active".tr : "paused".tr,
                 icon2: Icons.square,
                 color1: AppColors.redColor,
                 color2: AppColors.yellowColor,
-                ishow: true, // Shows two buttons (resume and next_phase)
+                ishow: !sessionController.isSessionActive(),
               ),
               SizedBox(height: 12 * heightScaleFactor),
             ],
@@ -72,5 +75,39 @@ class AdminActiveSession extends StatelessWidget {
         ],
       );
     });
+  }
+
+  Future<void> handleResume(session, SessionActionController sessionController) async {
+    print("[AdminActiveSession] Resume button tapped for session ID: ${session.id}");
+    if (session.id != null) {
+      await SharedPrefServices.saveSessionId(session.id!);
+      bool success = await sessionController.resumeSession(session.id!);
+      if (success) {
+        Get.snackbar(
+          'Success',
+          'Session resumed successfully!',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+        );
+      }
+    }
+  }
+
+  Future<void> handleNextPhase(session, SessionActionController sessionController) async {
+    print("[AdminActiveSession] Next Phase button tapped for session ID: ${session.id}");
+    if (session.id != null) {
+      await SharedPrefServices.saveSessionId(session.id!);
+      bool success = await sessionController.nextPhase(session.id!);
+      if (success) {
+        Get.snackbar(
+          'Success',
+          'Advanced to Phase ${sessionController.currentPhaseId.value}!',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+        );
+      }
+    }
   }
 }

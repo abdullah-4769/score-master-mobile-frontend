@@ -1,4 +1,4 @@
-
+// lib/components/evaluate_response_score_break_container.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scorer/components/responsive_fonts.dart';
@@ -11,10 +11,18 @@ class EvaluateResponseScoreBreakContainer extends StatelessWidget {
     super.key,
     required this.heightScaleFactor,
     required this.widthScaleFactor,
+    this.charity = '0/25', // Optional with default value
+    this.strategicThinking = '0/25', // Optional with default value
+    this.feasibility = '0/25', // Optional with default value
+    this.innovation = '0/25', // Optional with default value
   });
 
   final double heightScaleFactor;
   final double widthScaleFactor;
+  final String charity;
+  final String strategicThinking;
+  final String feasibility;
+  final String innovation;
 
   @override
   Widget build(BuildContext context) {
@@ -32,58 +40,46 @@ class EvaluateResponseScoreBreakContainer extends StatelessWidget {
           children: [
             SizedBox(height: 20 * heightScaleFactor),
             BoldText(
-      text: "scoring_breakdown".tr,
-      fontSize: 16 * widthScaleFactor,
-      selectionColor: AppColors.blueColor,
-    ),
-           SizedBox(height: 31 * heightScaleFactor),
-    CustomSloderRow(
-      
-      
-       fontSize: ResponsiveFont.getFontSizeCustom
-                            
-                            (
-    defaultSize: 14 * widthScaleFactor
-    ,smallSize: 11 * widthScaleFactor,
-                            ),
-      text: "clarity_specificity".tr, text2: "22/25"),
-    SizedBox(height: 5 * heightScaleFactor),
-    CustomSloderRow(
-      
-      
-    
-       fontSize: ResponsiveFont.getFontSizeCustom
-                            
-                            (
-    defaultSize: 14 * widthScaleFactor
-    ,smallSize: 11 * widthScaleFactor,
-                            ),
-      text: "strategic_thinking".tr, text2: "22/25"),
-    SizedBox(height: 5 * heightScaleFactor),
-    CustomSloderRow(
-      
-     fontSize: ResponsiveFont.getFontSizeCustom
-                            
-                            (
-    defaultSize: 14 * widthScaleFactor
-    ,smallSize: 11 * widthScaleFactor,
-                            ),
-      
-    
-      
-      text: "feasibility".tr, text2: "22/25"),
-    SizedBox(height: 5 * heightScaleFactor),
-    CustomSloderRow(
-      
-      
-     fontSize: ResponsiveFont.getFontSizeCustom
-                            
-                            (
-    defaultSize: 14 * widthScaleFactor
-    ,smallSize: 11 * widthScaleFactor,
-                            ),
-      
-      text: "innovation".tr, text2: "22/25"),
+              text: "scoring_breakdown".tr,
+              fontSize: 16 * widthScaleFactor,
+              selectionColor: AppColors.blueColor,
+            ),
+            SizedBox(height: 31 * heightScaleFactor),
+            CustomSloderRow(
+              fontSize: ResponsiveFont.getFontSizeCustom(
+                defaultSize: 14 * widthScaleFactor,
+                smallSize: 11 * widthScaleFactor,
+              ),
+              text: "clarity_specificity".tr,
+              text2: charity, // Use passed charity value
+            ),
+            SizedBox(height: 5 * heightScaleFactor),
+            CustomSloderRow(
+              fontSize: ResponsiveFont.getFontSizeCustom(
+                defaultSize: 14 * widthScaleFactor,
+                smallSize: 11 * widthScaleFactor,
+              ),
+              text: "strategic_thinking".tr,
+              text2: strategicThinking, // Use passed strategicThinking value
+            ),
+            SizedBox(height: 5 * heightScaleFactor),
+            CustomSloderRow(
+              fontSize: ResponsiveFont.getFontSizeCustom(
+                defaultSize: 14 * widthScaleFactor,
+                smallSize: 11 * widthScaleFactor,
+              ),
+              text: "feasibility".tr,
+              text2: feasibility, // Use passed feasibility value
+            ),
+            SizedBox(height: 5 * heightScaleFactor),
+            CustomSloderRow(
+              fontSize: ResponsiveFont.getFontSizeCustom(
+                defaultSize: 14 * widthScaleFactor,
+                smallSize: 11 * widthScaleFactor,
+              ),
+              text: "innovation".tr,
+              text2: innovation, // Use passed innovation value
+            ),
           ],
         ),
       ),

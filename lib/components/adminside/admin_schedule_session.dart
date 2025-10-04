@@ -54,7 +54,7 @@ class AdminScheduleSession extends StatelessWidget {
                 color2: AppColors.scheColor,
                 heading: session.teamTitle ?? "Eranove Odyssey – Team A",
                 text1: "Phase ${session.totalPhases ?? 1}",
-                ishow: false, // Shows single button (start_early or pause)
+                ishow: false,
                 text2: "scheduled".tr,
                 description: session.description ?? "Leadership Assessment strengthens teamwork through interactive activities.",
                 text3: "Pause",

@@ -97,10 +97,13 @@ import 'package:get/get.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/constants/appimages.dart';
 import 'package:scorer/constants/routename.dart';
+import 'package:scorer/controllers/user_managment_controller.dart';
 import 'package:scorer/widgets/all_players_container.dart';
 
 class UserPlayerSide extends StatelessWidget {
-  const UserPlayerSide({super.key});
+  UserPlayerSide({super.key});
+  
+  final UserManagmentController userController = Get.find<UserManagmentController>();
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +128,10 @@ class UserPlayerSide extends StatelessWidget {
 
           
           AllPlayersContainer(
-            onTap: () => Get.toNamed(RouteName.userPlayerDetailedScree),
+            onTap: () => Get.toNamed(
+              RouteName.userPlayerDetailedScree,
+              arguments: {'userId': userController.getCurrentUserId()},
+            ),
             fontSize2: 12 * widthScaleFactor,
             text: "Alex Martinez",
             text2: "john.smith@company.com",
@@ -133,8 +139,10 @@ class UserPlayerSide extends StatelessWidget {
           ),
           SizedBox(height: 7 * heightScaleFactor),
           AllPlayersContainer(
-            onTap: () => Get.toNamed(RouteName.userPlayerDetailedScree),
-
+            onTap: () => Get.toNamed(
+              RouteName.userPlayerDetailedScree,
+              arguments: {'userId': userController.getCurrentUserId()},
+            ),
             text3: "inactive".tr,
             color: AppColors.orangeColor,
             width: 65 * widthScaleFactor,
@@ -186,6 +194,17 @@ class UserPlayerSide extends StatelessWidget {
           AllPlayersContainer(
             onTap: () => Get.toNamed(RouteName.userPlayerDetailedScree),
 
+            fontSize2: 12 * widthScaleFactor,
+            text: "Alex Martinez",
+            text2: "john.smith@company.com",
+            image: Appimages.player2,
+          ),
+          SizedBox(height: 7 * heightScaleFactor),
+          AllPlayersContainer(
+            onTap: () => Get.toNamed(
+              RouteName.userPlayerDetailedScree,
+              arguments: {'userId': userController.getCurrentUserId()},
+            ),
             fontSize2: 12 * widthScaleFactor,
             text: "Alex Martinez",
             text2: "john.smith@company.com",

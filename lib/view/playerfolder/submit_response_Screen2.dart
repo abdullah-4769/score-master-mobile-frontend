@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,8 +26,8 @@ class SubmitResponseScreen2 extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     // Use a base width to calculate a scaling factor.
-    const double baseWidth = 375.0; 
-      //  final screenWidth = MediaQuery.of(context).size.width;
+    const double baseWidth = 375.0;
+    //  final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final safeAreaTop = MediaQuery.of(context).padding.top;
     final safeAreaBottom = MediaQuery.of(context).padding.bottom;
@@ -47,7 +46,10 @@ class SubmitResponseScreen2 extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 30 * scaleFactor, right: 10 * scaleFactor),
+                  padding: EdgeInsets.only(
+                    left: 30 * scaleFactor,
+                    right: 10 * scaleFactor,
+                  ),
                   child: Row(
                     children: [
                       Image.asset(
@@ -58,7 +60,7 @@ class SubmitResponseScreen2 extends StatelessWidget {
                       Expanded(
                         child: Center(
                           child: BoldText(
-                          text: "team_alpha".tr,
+                            text: "team_alpha".tr,
                             fontSize: 22 * scaleFactor,
                           ),
                         ),
@@ -91,11 +93,11 @@ class SubmitResponseScreen2 extends StatelessWidget {
                 ),
                 SizedBox(height: 30 * scaleFactor),
                 BoldText(
-                   text: "response_submitted".tr,
+                  text: "response_submitted".tr,
                   fontSize: 16 * scaleFactor,
                   selectionColor: AppColors.blueColor,
                 ),
-                              SizedBox(height: 20 * scaleFactor),
+                SizedBox(height: 20 * scaleFactor),
 
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30 * scaleFactor),
@@ -105,8 +107,8 @@ class SubmitResponseScreen2 extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30 * scaleFactor),
                   child: Container(
-                    height: 215 .h,
-                    width: 336 .w,
+                    height: 215.h,
+                    width: 336.w,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: AppColors.greyColor,
@@ -124,58 +126,62 @@ class SubmitResponseScreen2 extends StatelessWidget {
                         children: [
                           SizedBox(height: 20 * scaleFactor),
                           BoldText(
-                           text: "scoring_breakdown".tr,
+                            text: "scoring_breakdown".tr,
                             selectionColor: AppColors.blueColor,
-                            fontSize: 16 .sp,
+                            fontSize: 16.sp,
                           ),
                           SizedBox(height: 5 * scaleFactor),
-                         CustomSloderRow(
-  // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
-  fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 11.sp
-
-
-  ),
-  text: "clarity_specificity".tr, text2: "22/25"),
+                          CustomSloderRow(
+                            // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
+                            fontSize: ResponsiveFont.getFontSizeCustom(
+                              defaultSize: 14.sp,
+                              smallSize: 11.sp,
+                            ),
+                            text: "clarity_specificity".tr,
+                            text2: "22/25",
+                          ),
                           SizedBox(height: 5 * scaleFactor),
-                         CustomSloderRow(
-  // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
-    fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 11.sp
-
-
-  ),
-  text: "strategic_thinking".tr, text2: "22/25"),
+                          CustomSloderRow(
+                            // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
+                            fontSize: ResponsiveFont.getFontSizeCustom(
+                              defaultSize: 14.sp,
+                              smallSize: 11.sp,
+                            ),
+                            text: "strategic_thinking".tr,
+                            text2: "22/25",
+                          ),
                           SizedBox(height: 5 * scaleFactor),
-                         CustomSloderRow(
-  // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
-    fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 11.sp
-
-  ),
-  text: "feasibility".tr, text2: "22/25"),
+                          CustomSloderRow(
+                            // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
+                            fontSize: ResponsiveFont.getFontSizeCustom(
+                              defaultSize: 14.sp,
+                              smallSize: 11.sp,
+                            ),
+                            text: "feasibility".tr,
+                            text2: "22/25",
+                          ),
                           SizedBox(height: 5 * scaleFactor),
-                        CustomSloderRow(
-  // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
-  fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 11.sp
-
-
-  ),
-  text: "innovation".tr, text2: "22/25"),
+                          CustomSloderRow(
+                            // fontSize: (Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 11:14,
+                            fontSize: ResponsiveFont.getFontSizeCustom(
+                              defaultSize: 14.sp,
+                              smallSize: 11.sp,
+                            ),
+                            text: "innovation".tr,
+                            text2: "22/25",
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 18* scaleFactor),
+                SizedBox(height: 18 * scaleFactor),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 13 * scaleFactor),
-                  child: TipsContainer(scaleFactor: scaleFactor, widthScaleFactor: widthScaleFactor),
+                  child: TipsContainer(
+                    scaleFactor: scaleFactor,
+                    widthScaleFactor: widthScaleFactor,
+                  ),
                 ),
                 SizedBox(height: 18 * scaleFactor),
                 Padding(
@@ -183,14 +189,14 @@ smallSize: 11.sp
                   child: Column(
                     children: [
                       CustomStratgyContainer(
-// fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
-fontSize2:  ResponsiveFont.getFontSize(),
+                        // fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
+                        fontSize2: ResponsiveFont.getFontSize(),
 
                         fontSize3: 10,
-                            width3: 68 * scaleFactor,
+                        width3: 68 * scaleFactor,
                         iconContainer: AppColors.forwardColor,
                         icon: Icons.check,
-                         text1: "phase1_strategy".tr,
+                        text1: "phase1_strategy".tr,
                         text2: "Completed • 20 min",
                         text3: "completed".tr,
                         smallContainer: AppColors.forwardColor,
@@ -200,14 +206,14 @@ fontSize2:  ResponsiveFont.getFontSize(),
                       ),
                       SizedBox(height: 10 * scaleFactor),
                       CustomStratgyContainer(
-// fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
-fontSize2:  ResponsiveFont.getFontSize(),
+                        // fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
+                        fontSize2: ResponsiveFont.getFontSize(),
 
-                       fontSize3: 10,
-                            width3: 68 * scaleFactor,
+                        fontSize3: 10,
+                        width3: 68 * scaleFactor,
                         iconContainer: AppColors.forwardColor,
                         icon: Icons.check,
-                         text1: "phase2_strategy".tr,
+                        text1: "phase2_strategy".tr,
                         text2: "Active • 30 min",
                         text3: "Completed",
                         smallContainer: AppColors.forwardColor,
@@ -217,13 +223,13 @@ fontSize2:  ResponsiveFont.getFontSize(),
                       ),
                       SizedBox(height: 10 * scaleFactor),
                       CustomStratgyContainer(
-fontSize2:  ResponsiveFont.getFontSize(),
-// fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
-fontSize3: 10,
-                            width3: 68 * scaleFactor,
+                        fontSize2: ResponsiveFont.getFontSize(),
+                        // fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
+                        fontSize3: 10,
+                        width3: 68 * scaleFactor,
                         iconContainer: AppColors.watchColor,
                         icon: Icons.watch_later,
-                        text1: "phase3_implementation".tr, 
+                        text1: "phase3_implementation".tr,
                         text2: "Upcoming • 15 min",
                         text3: "Pending",
                         smallContainer: AppColors.watchColor,
@@ -233,13 +239,14 @@ fontSize3: 10,
                       ),
                       SizedBox(height: 10 * scaleFactor),
                       CustomStratgyContainer(
-// fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
-fontSize2:  ResponsiveFont.getFontSize(),
-                        
-                     fontSize3: 10,
-                            width3: 68 * scaleFactor,   iconContainer: AppColors.watchColor,
+                        // fontSize2:(Get.locale?.languageCode == 'fr' || Get.locale?.languageCode == 'es')? 10:14,
+                        fontSize2: ResponsiveFont.getFontSize(),
+
+                        fontSize3: 10,
+                        width3: 68 * scaleFactor,
+                        iconContainer: AppColors.watchColor,
                         icon: Icons.watch_later,
-                       text1: "phase4_evaluation".tr,
+                        text1: "phase4_evaluation".tr,
                         text2: "Upcoming • 15 min",
                         text3: "Pending",
                         smallContainer: AppColors.watchColor,
@@ -255,19 +262,20 @@ fontSize2:  ResponsiveFont.getFontSize(),
                         color: AppColors.forwardColor,
                         ishow: true,
                         image: Appimages.submit,
-                        imageHeight: 32 .h,
-                        imageWidth: 32 .w,
+                        imageHeight: 32.h,
+                        imageWidth: 32.w,
                       ),
                       SizedBox(height: 10 * scaleFactor),
                       LoginButton(
                         fontSize: 19.sp,
-                        onTap: () => Get.toNamed(RouteName.playerLeaderboardScreen),
+                        onTap: () =>
+                            Get.toNamed(RouteName.playerLeaderboardScreen),
 
-                        text:"live_leaderboard".tr,
+                        text: "live_leaderboard".tr,
                         ishow: true,
                         image: Appimages.tropy1,
-                        imageHeight: 32 .h,
-                        imageWidth: 32 .w,
+                        imageHeight: 32.h,
+                        imageWidth: 32.w,
                       ),
                       SizedBox(height: 10 * scaleFactor),
                       LoginButton(
@@ -277,13 +285,13 @@ fontSize2:  ResponsiveFont.getFontSize(),
                         ishow: true,
                         color: AppColors.redColor,
                         image: Appimages.export,
-                        imageHeight: 32 .h,
-                        imageWidth: 32 .w,
+                        imageHeight: 32.h,
+                        imageWidth: 32.w,
                       ),
                       SizedBox(height: 40 * scaleFactor),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

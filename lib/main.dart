@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
-
           debugShowCheckedModeBanner: false,
           translations: AppTranslations(),
           locale: locale,

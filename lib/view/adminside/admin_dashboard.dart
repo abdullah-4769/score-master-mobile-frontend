@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scorer/components/adminside/admin_Container_tack_container.dart';
 import 'package:scorer/components/adminside/admin_active_Session.dart';
 import 'package:scorer/components/adminside/admin_schedule_session.dart';
 import 'package:scorer/constants/appcolors.dart';
-import 'package:scorer/constants/appimages.dart';
 import 'package:scorer/controllers/facil_dashboard_controller.dart';
 import 'package:scorer/api/api_controllers/active_schedule_controller.dart';
 import 'package:scorer/api/api_controllers/session_action_controller.dart';
-import 'package:scorer/view/FacilitateFolder/aa.dart';
 import 'package:scorer/widgets/bold_text.dart';
 import 'package:scorer/widgets/main_text.dart';
 import 'package:scorer/widgets/setting_container.dart';
 import 'package:scorer/shared_preferences/shared_preferences.dart';
+
+import '../../components/adminside/admin_Container_tack_container.dart';
+import '../../constants/appimages.dart';
+import '../FacilitateFolder/aa.dart';
 
 class AdminDashboard extends StatelessWidget {
   final FacilDashboardController controller = Get.put(FacilDashboardController());
@@ -45,9 +46,7 @@ class AdminDashboard extends StatelessWidget {
             children: [
               /// Top header
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 32 * widthScaleFactor,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 32 * widthScaleFactor),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -60,23 +59,17 @@ class AdminDashboard extends StatelessWidget {
                       children: [
                         SettingContainer(icons: Icons.settings),
                         SizedBox(width: 6 * widthScaleFactor),
-                        SettingContainer(
-                          icons: Icons.notifications,
-                          ishow: true,
-                        ),
+                        SettingContainer(icons: Icons.notifications, ishow: true),
                       ],
                     ),
                   ],
                 ),
               ),
-
               SizedBox(height: 20 * heightScaleFactor),
 
               /// Welcome texts + stacked container (contains TabBar)
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 32 * widthScaleFactor,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 32 * widthScaleFactor),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

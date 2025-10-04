@@ -1,204 +1,282 @@
-class ResumeModel {
-  int? id;
-  int? gameFormatId;
-  String? description;
-  int? createdById;
-  String? joinCode;
-  String? joiningLink;
-  String? status;
-  int? duration;
-  int? elapsedTime;
-  String? startedAt;
-  Null? pausedAt;
-  Null? endedAt;
-  String? createdAt;
-  String? updatedAt;
+// Start Session Model
+class StartSessionModel {
+  final int? id;
+  final int? gameFormatId;
+  final String? description;
+  final int? createdById;
+  final String? joinCode;
+  final String? joiningLink;
+  final String? status;
+  final int? duration;
+  final int? elapsedTime;
+  final String? startedAt;
+  final String? pausedAt;
+  final String? endedAt;
+  final String? createdAt;
+  final String? updatedAt;
+  final List<Map<String, dynamic>>? phases; // Store raw phase data
 
-  ResumeModel(
-      {this.id,
-        this.gameFormatId,
-        this.description,
-        this.createdById,
-        this.joinCode,
-        this.joiningLink,
-        this.status,
-        this.duration,
-        this.elapsedTime,
-        this.startedAt,
-        this.pausedAt,
-        this.endedAt,
-        this.createdAt,
-        this.updatedAt});
+  StartSessionModel({
+    this.id,
+    this.gameFormatId,
+    this.description,
+    this.createdById,
+    this.joinCode,
+    this.joiningLink,
+    this.status,
+    this.duration,
+    this.elapsedTime,
+    this.startedAt,
+    this.pausedAt,
+    this.endedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.phases,
+  });
 
-  ResumeModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    gameFormatId = json['gameFormatId'];
-    description = json['description'];
-    createdById = json['createdById'];
-    joinCode = json['joinCode'];
-    joiningLink = json['joiningLink'];
-    status = json['status'];
-    duration = json['duration'];
-    elapsedTime = json['elapsedTime'];
-    startedAt = json['startedAt'];
-    pausedAt = json['pausedAt'];
-    endedAt = json['endedAt'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+  factory StartSessionModel.fromJson(Map<String, dynamic> json) {
+    return StartSessionModel(
+      id: json['id'],
+      gameFormatId: json['gameFormatId'],
+      description: json['description'],
+      createdById: json['createdById'],
+      joinCode: json['joinCode'],
+      joiningLink: json['joiningLink'],
+      status: json['status'],
+      duration: json['duration'],
+      elapsedTime: json['elapsedTime'],
+      startedAt: json['startedAt'],
+      pausedAt: json['pausedAt'],
+      endedAt: json['endedAt'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+      phases: json['phases'] != null
+          ? List<Map<String, dynamic>>.from(json['phases'])
+          : null,
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['gameFormatId'] = this.gameFormatId;
-    data['description'] = this.description;
-    data['createdById'] = this.createdById;
-    data['joinCode'] = this.joinCode;
-    data['joiningLink'] = this.joiningLink;
-    data['status'] = this.status;
-    data['duration'] = this.duration;
-    data['elapsedTime'] = this.elapsedTime;
-    data['startedAt'] = this.startedAt;
-    data['pausedAt'] = this.pausedAt;
-    data['endedAt'] = this.endedAt;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    return data;
+    return {
+      'id': id,
+      'gameFormatId': gameFormatId,
+      'description': description,
+      'createdById': createdById,
+      'joinCode': joinCode,
+      'joiningLink': joiningLink,
+      'status': status,
+      'duration': duration,
+      'elapsedTime': elapsedTime,
+      'startedAt': startedAt,
+      'pausedAt': pausedAt,
+      'endedAt': endedAt,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+      'phases': phases,
+    };
   }
 }
-class StartModel {
-  int? id;
-  int? gameFormatId;
-  String? description;
-  int? createdById;
-  String? joinCode;
-  String? joiningLink;
-  String? status;
-  int? duration;
-  int? elapsedTime;
-  String? startedAt;
-  Null? pausedAt;
-  Null? endedAt;
-  String? createdAt;
-  String? updatedAt;
+// Pause Session Model
+class PauseSessionModel {
+  final int? id;
+  final int? gameFormatId;
+  final String? description;
+  final int? createdById;
+  final String? joinCode;
+  final String? joiningLink;
+  final String? status;
+  final int? duration;
+  final int? elapsedTime;
+  final String? startedAt;
+  final String? pausedAt;
+  final String? endedAt;
+  final String? createdAt;
+  final String? updatedAt;
 
-  StartModel(
-      {this.id,
-        this.gameFormatId,
-        this.description,
-        this.createdById,
-        this.joinCode,
-        this.joiningLink,
-        this.status,
-        this.duration,
-        this.elapsedTime,
-        this.startedAt,
-        this.pausedAt,
-        this.endedAt,
-        this.createdAt,
-        this.updatedAt});
+  PauseSessionModel({
+    this.id,
+    this.gameFormatId,
+    this.description,
+    this.createdById,
+    this.joinCode,
+    this.joiningLink,
+    this.status,
+    this.duration,
+    this.elapsedTime,
+    this.startedAt,
+    this.pausedAt,
+    this.endedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
 
-  StartModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    gameFormatId = json['gameFormatId'];
-    description = json['description'];
-    createdById = json['createdById'];
-    joinCode = json['joinCode'];
-    joiningLink = json['joiningLink'];
-    status = json['status'];
-    duration = json['duration'];
-    elapsedTime = json['elapsedTime'];
-    startedAt = json['startedAt'];
-    pausedAt = json['pausedAt'];
-    endedAt = json['endedAt'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+  factory PauseSessionModel.fromJson(Map<String, dynamic> json) {
+    return PauseSessionModel(
+      id: json['id'],
+      gameFormatId: json['gameFormatId'],
+      description: json['description'],
+      createdById: json['createdById'],
+      joinCode: json['joinCode'],
+      joiningLink: json['joiningLink'],
+      status: json['status'],
+      duration: json['duration'],
+      elapsedTime: json['elapsedTime'],
+      startedAt: json['startedAt'],
+      pausedAt: json['pausedAt'],
+      endedAt: json['endedAt'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['gameFormatId'] = this.gameFormatId;
-    data['description'] = this.description;
-    data['createdById'] = this.createdById;
-    data['joinCode'] = this.joinCode;
-    data['joiningLink'] = this.joiningLink;
-    data['status'] = this.status;
-    data['duration'] = this.duration;
-    data['elapsedTime'] = this.elapsedTime;
-    data['startedAt'] = this.startedAt;
-    data['pausedAt'] = this.pausedAt;
-    data['endedAt'] = this.endedAt;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    return data;
+    return {
+      'id': id,
+      'gameFormatId': gameFormatId,
+      'description': description,
+      'createdById': createdById,
+      'joinCode': joinCode,
+      'joiningLink': joiningLink,
+      'status': status,
+      'duration': duration,
+      'elapsedTime': elapsedTime,
+      'startedAt': startedAt,
+      'pausedAt': pausedAt,
+      'endedAt': endedAt,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+    };
   }
 }
-class PauseModel {
-  int? id;
-  int? gameFormatId;
-  String? description;
-  int? createdById;
-  String? joinCode;
-  String? joiningLink;
-  String? status;
-  int? duration;
-  int? elapsedTime;
-  Null? startedAt;
-  String? pausedAt;
-  Null? endedAt;
-  String? createdAt;
-  String? updatedAt;
 
-  PauseModel(
-      {this.id,
-        this.gameFormatId,
-        this.description,
-        this.createdById,
-        this.joinCode,
-        this.joiningLink,
-        this.status,
-        this.duration,
-        this.elapsedTime,
-        this.startedAt,
-        this.pausedAt,
-        this.endedAt,
-        this.createdAt,
-        this.updatedAt});
+// Resume Session Model
+class ResumeSessionModel {
+  final int? id;
+  final int? gameFormatId;
+  final String? description;
+  final int? createdById;
+  final String? joinCode;
+  final String? joiningLink;
+  final String? status;
+  final int? duration;
+  final int? elapsedTime;
+  final String? startedAt;
+  final String? pausedAt;
+  final String? endedAt;
+  final String? createdAt;
+  final String? updatedAt;
 
-  PauseModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    gameFormatId = json['gameFormatId'];
-    description = json['description'];
-    createdById = json['createdById'];
-    joinCode = json['joinCode'];
-    joiningLink = json['joiningLink'];
-    status = json['status'];
-    duration = json['duration'];
-    elapsedTime = json['elapsedTime'];
-    startedAt = json['startedAt'];
-    pausedAt = json['pausedAt'];
-    endedAt = json['endedAt'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+  ResumeSessionModel({
+    this.id,
+    this.gameFormatId,
+    this.description,
+    this.createdById,
+    this.joinCode,
+    this.joiningLink,
+    this.status,
+    this.duration,
+    this.elapsedTime,
+    this.startedAt,
+    this.pausedAt,
+    this.endedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory ResumeSessionModel.fromJson(Map<String, dynamic> json) {
+    return ResumeSessionModel(
+      id: json['id'],
+      gameFormatId: json['gameFormatId'],
+      description: json['description'],
+      createdById: json['createdById'],
+      joinCode: json['joinCode'],
+      joiningLink: json['joiningLink'],
+      status: json['status'],
+      duration: json['duration'],
+      elapsedTime: json['elapsedTime'],
+      startedAt: json['startedAt'],
+      pausedAt: json['pausedAt'],
+      endedAt: json['endedAt'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['gameFormatId'] = this.gameFormatId;
-    data['description'] = this.description;
-    data['createdById'] = this.createdById;
-    data['joinCode'] = this.joinCode;
-    data['joiningLink'] = this.joiningLink;
-    data['status'] = this.status;
-    data['duration'] = this.duration;
-    data['elapsedTime'] = this.elapsedTime;
-    data['startedAt'] = this.startedAt;
-    data['pausedAt'] = this.pausedAt;
-    data['endedAt'] = this.endedAt;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    return data;
+    return {
+      'id': id,
+      'gameFormatId': gameFormatId,
+      'description': description,
+      'createdById': createdById,
+      'joinCode': joinCode,
+      'joiningLink': joiningLink,
+      'status': status,
+      'duration': duration,
+      'elapsedTime': elapsedTime,
+      'startedAt': startedAt,
+      'pausedAt': pausedAt,
+      'endedAt': endedAt,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+    };
+  }
+}
+class PhaseData {
+  final int? id;
+  final int? sessionId;
+  final int? phaseId;
+  final String? status;
+  final int? timeDuration;
+  final int? elapsedTime;
+  final String? startedAt;
+  final String? pausedAt;
+  final String? endedAt;
+  final String? createdAt;
+  final String? updatedAt;
+
+  PhaseData({
+    this.id,
+    this.sessionId,
+    this.phaseId,
+    this.status,
+    this.timeDuration,
+    this.elapsedTime,
+    this.startedAt,
+    this.pausedAt,
+    this.endedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory PhaseData.fromJson(Map<String, dynamic> json) {
+    return PhaseData(
+      id: json['id'],
+      sessionId: json['sessionId'],
+      phaseId: json['phaseId'],
+      status: json['status'],
+      timeDuration: json['timeDuration'],
+      elapsedTime: json['elapsedTime'],
+      startedAt: json['startedAt'],
+      pausedAt: json['pausedAt'],
+      endedAt: json['endedAt'],
+      createdAt: json['createdAt'],
+      updatedAt: json['updatedAt'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'sessionId': sessionId,
+      'phaseId': phaseId,
+      'status': status,
+      'timeDuration': timeDuration,
+      'elapsedTime': elapsedTime,
+      'startedAt': startedAt,
+      'pausedAt': pausedAt,
+      'endedAt': endedAt,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
+    };
   }
 }

@@ -1,144 +1,77 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                               
-
-
-
-
-
-
-
-
-
-
+// lib/components/audio_container.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/constants/appimages.dart';
 import 'package:scorer/widgets/bold_text.dart';
 import 'package:scorer/widgets/main_text.dart';
 
-class AudioContainer extends StatelessWidget {
-  const AudioContainer({super.key});
+class AudioContainer extends StatefulWidget {
+  final String? feedbackText;
+
+  const AudioContainer({super.key, this.feedbackText});
+
+  @override
+  State<AudioContainer> createState() => _AudioContainerState();
+}
+
+class _AudioContainerState extends State<AudioContainer> {
+  final FlutterTts flutterTts = FlutterTts();
+  bool isPlaying = false;
+  double progress = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _initTts();
+  }
+
+  Future<void> _initTts() async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setVolume(1.0);
+    await flutterTts.setPitch(1.0);
+
+    // Make speak() await until finished
+    await flutterTts.awaitSpeakCompletion(true);
+
+    // Optional: Listen to progress
+    flutterTts.setProgressHandler((String text, int startOffset, int endOffset, String word) {
+      setState(() {
+        progress = startOffset / text.length;
+      });
+    });
+  }
+
+  Future<void> _togglePlayPause() async {
+    if (isPlaying) {
+      await flutterTts.stop();
+      setState(() {
+        isPlaying = false;
+      });
+    } else {
+      final textToSpeak = widget.feedbackText ??
+          "Provide more detailed steps on how you would check and resolve the billing issue.";
+      await flutterTts.speak(textToSpeak);
+    }
+  }
+
+  @override
+  void dispose() {
+    flutterTts.stop();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    
     const double baseWidth = 414.0;
     const double baseHeight = 896.0;
 
-    
     final double scaleWidth = screenWidth / baseWidth;
     final double scaleHeight = screenHeight / baseHeight;
 
@@ -158,7 +91,7 @@ class AudioContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 BoldText(
-                 text: "audio_response".tr,
+                  text: "audio_response".tr,
                   fontSize: 16 * scaleWidth,
                   selectionColor: AppColors.blueColor,
                 ),
@@ -179,7 +112,7 @@ class AudioContainer extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 10*scaleHeight,),
+            SizedBox(height: 10 * scaleHeight),
             Container(
               width: 300 * scaleWidth,
               height: 52 * scaleHeight,
@@ -200,18 +133,27 @@ class AudioContainer extends StatelessWidget {
                       child: SvgPicture.asset(
                         Appimages.lines,
                         height: 37 * scaleHeight,
+                        color: isPlaying
+                            ? AppColors.forwardColor
+                            : AppColors.greyColor,
                       ),
                     ),
                     Expanded(
                       child: SvgPicture.asset(
                         Appimages.lines2,
                         height: 37 * scaleHeight,
+                        color: isPlaying
+                            ? AppColors.forwardColor
+                            : AppColors.greyColor,
                       ),
                     ),
                     Expanded(
                       child: SvgPicture.asset(
                         Appimages.lines2,
                         height: 37 * scaleHeight,
+                        color: isPlaying
+                            ? AppColors.forwardColor
+                            : AppColors.greyColor,
                       ),
                     ),
                   ],
@@ -222,17 +164,20 @@ class AudioContainer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: 31 * scaleWidth,
-                  width: 31 * scaleWidth,
-                  decoration: BoxDecoration(
-                    color: AppColors.forwardColor,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.play_arrow_sharp,
-                    color: AppColors.whiteColor,
-                    size: 20 * scaleWidth, 
+                InkWell(
+                  onTap: _togglePlayPause,
+                  child: Container(
+                    height: 31 * scaleWidth,
+                    width: 31 * scaleWidth,
+                    decoration: BoxDecoration(
+                      color: AppColors.forwardColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      isPlaying ? Icons.pause : Icons.play_arrow_sharp,
+                      color: AppColors.whiteColor,
+                      size: 20 * scaleWidth,
+                    ),
                   ),
                 ),
                 Row(
@@ -246,7 +191,7 @@ class AudioContainer extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          width: 22 * scaleWidth,
+                          width: 22 * progress * scaleWidth,
                           height: 3 * scaleHeight,
                           decoration: BoxDecoration(
                             color: AppColors.forwardColor,
@@ -257,7 +202,7 @@ class AudioContainer extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 42 * scaleWidth,
+                          width: (42 - 22 * progress) * scaleWidth,
                           height: 3 * scaleHeight,
                           decoration: BoxDecoration(
                             color: AppColors.teamColor,

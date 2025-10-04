@@ -1,4 +1,4 @@
-
+// lib/components/player_analysis.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,12 +10,35 @@ import 'package:scorer/widgets/main_text.dart';
 import 'package:scorer/widgets/useable_container.dart';
 
 class PlayerAnalyasis extends StatelessWidget {
+  final double scaleFactor;
+  final int? finalScore;
+  final int? relevanceScore;
+  final String? suggestion;
+  final String? qualityAssessment;
+  final String? description;
+
   const PlayerAnalyasis({
     super.key,
     required this.scaleFactor,
+    this.finalScore,
+    this.relevanceScore,
+    this.suggestion,
+    this.qualityAssessment,
+    this.description,
   });
 
-  final double scaleFactor;
+  Color _getQualityColor(String quality) {
+    switch (quality.toLowerCase()) {
+      case 'high':
+        return AppColors.forwardColor;
+      case 'average':
+        return AppColors.yellowColor;
+      case 'low':
+        return AppColors.redColor;
+      default:
+        return AppColors.greyColor;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,65 +74,64 @@ class PlayerAnalyasis extends StatelessWidget {
                       top: -10 * scaleFactor,
                       child: SvgPicture.asset(Appimages.arrowdown),
                     ),
-                    Container(
-                      child: Image.asset(Appimages.ai2),
-                    )
+                    Container(child: Image.asset(Appimages.ai2)),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BoldText(
-                     text: "relevance_score".tr,
+                      text: "relevance_score".tr,
                       fontSize: 16 * scaleFactor,
                       selectionColor: AppColors.blueColor,
                     ),
                     UseableContainer(
-                      text: "78",
+                      text: "${relevanceScore ?? 78}",
                       fontFamily: "giory",
                       fontSize: 14 * scaleFactor,
                       width: 37 * scaleFactor,
                       height: 28 * scaleFactor,
                       color: AppColors.orangeColor,
-                    )
+                    ),
                   ],
                 ),
-              MainText(
-      text: "response_address_prompt".tr,
-      fontSize: 14 * scaleFactor,
-      height: 1.3,
-    ),
-    
+                MainText(
+                  text: suggestion ?? "response_address_prompt".tr,
+                  fontSize: 14 * scaleFactor,
+                  height: 1.3,
+                  maxLines: 3,
+                  //overflow: TextOverflow.ellipsis,
+                ),
                 SizedBox(height: 10 * scaleFactor),
                 Divider(
-                  color: AppColors.greyColor,
-                  thickness: 1 * scaleFactor,
-                ),
+                    color: AppColors.greyColor, thickness: 1 * scaleFactor),
                 SizedBox(height: 20 * scaleFactor),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  BoldText(
-      text: "quality_assessment".tr,
-      fontSize: 16 * scaleFactor,
-      selectionColor: AppColors.blueColor,
-    ),
-                    
-    UseableContainer(
-      text: "high".tr,
-      fontSize: 12 * scaleFactor,
-      width: 46 * scaleFactor,
-      height: 28 * scaleFactor,
-      color: AppColors.forwardColor,
-    ),
+                    BoldText(
+                      text: "quality_assessment".tr,
+                      fontSize: 16 * scaleFactor,
+                      selectionColor: AppColors.blueColor,
+                    ),
+                    UseableContainer(
+                      text: qualityAssessment?.tr ?? "average".tr,
+                      fontSize: 12 * scaleFactor,
+                      width: 46 * scaleFactor,
+                      height: 28 * scaleFactor,
+                      color: _getQualityColor(qualityAssessment ?? 'average'),
+                    ),
                   ],
                 ),
                 SizedBox(height: 10 * scaleFactor),
                 MainText(
-                  text: "Well-structured response with specific metrics and measurable outcomes.",
+                  text: description ??
+                      "Well-structured response with specific metrics and measurable outcomes.",
                   fontSize: 14 * scaleFactor,
                   height: 1.3,
-                )
+                  maxLines: 4,
+                 // overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
           ),
@@ -122,10 +144,7 @@ class PlayerAnalyasis extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
-                  colors: [
-                    AppColors.forwardColor,
-                    Colors.grey.shade200,
-                  ],
+                  colors: [AppColors.forwardColor, Colors.grey.shade200],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -140,17 +159,16 @@ class PlayerAnalyasis extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     BoldText(
-                      text: "89/100",
-                      fontSize: 30 .sp,
+                      text: "${finalScore ?? 89}/100",
+                      fontSize: 30.sp,
                       selectionColor: AppColors.createBorderColor,
                     ),
                     SizedBox(height: 4 * scaleFactor),
-                   BoldText(
-      text: "final_score".tr,
-      fontSize: 16.sp,
-      selectionColor: AppColors.blueColor,
-    ),
-    
+                    BoldText(
+                      text: "final_score".tr,
+                      fontSize: 16.sp,
+                      selectionColor: AppColors.blueColor,
+                    ),
                   ],
                 ),
               ),

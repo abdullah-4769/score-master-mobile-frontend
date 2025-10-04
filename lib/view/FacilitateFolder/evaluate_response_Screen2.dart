@@ -1,253 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-
-
-
-
-
-
-
-
-
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-               
-
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -280,56 +30,57 @@ class EvaluateResponseScreen2 extends StatelessWidget {
     final double screenHeight = screenSize.height;
     final double screenWidth = screenSize.width;
 
-    
     const double baseHeight = 812.0;
     const double baseWidth = 414.0;
     final double heightScaleFactor = screenHeight / baseHeight;
     final double widthScaleFactor = screenWidth / baseWidth;
     bool isSpanish = Get.locale?.languageCode == 'es';
 
-
     return Scaffold(
       body: GradientBackground(
-        
         child: SafeArea(
           child: Stack(
             children: [
               Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30 * widthScaleFactor),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30 * widthScaleFactor,
+                ),
 
-                
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                       SizedBox(
-                  height: 50,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: SvgPicture.asset(
-                                Appimages.arrowback,
-                                colorFilter: ColorFilter.mode(
-                                    AppColors.forwardColor, BlendMode.srcIn),
-                                width: 24 .w,
-                                height: 20 .h,
+                      SizedBox(
+                        height: 50,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: InkWell(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: SvgPicture.asset(
+                                  Appimages.arrowback,
+                                  colorFilter: ColorFilter.mode(
+                                    AppColors.forwardColor,
+                                    BlendMode.srcIn,
+                                  ),
+                                  width: 24.w,
+                                  height: 20.h,
+                                ),
                               ),
                             ),
-                      ),
-                      Center(
-                        child: BoldText(
-                          text: "evaluate_response".tr,
-                          selectionColor: AppColors.blueColor,
+                            Center(
+                              child: BoldText(
+                                text: "evaluate_response".tr,
+                                selectionColor: AppColors.blueColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ), SizedBox(height: 27 * heightScaleFactor),
+                      SizedBox(height: 27 * heightScaleFactor),
                       CustomResponseContainer(
                         ishow1: false,
                         containerHeight: 160 * heightScaleFactor,
@@ -352,27 +103,35 @@ class EvaluateResponseScreen2 extends StatelessWidget {
                         height: 630 * heightScaleFactor,
                         width: 376 * widthScaleFactor,
                         decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.greyColor, width: 1.7 * widthScaleFactor),
-                          borderRadius: BorderRadius.circular(24 * widthScaleFactor),
+                          border: Border.all(
+                            color: AppColors.greyColor,
+                            width: 1.7 * widthScaleFactor,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            24 * widthScaleFactor,
+                          ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20 * widthScaleFactor),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20 * widthScaleFactor,
+                          ),
                           child: Column(
                             children: [
                               SizedBox(height: 20 * heightScaleFactor),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                                 children: [
-                                 BoldText(
-  text: "your_evaluation".tr,
-  selectionColor: AppColors.blueColor,
-  fontSize: 16 * widthScaleFactor, 
-),
+                                  BoldText(
+                                    text: "your_evaluation".tr,
+                                    selectionColor: AppColors.blueColor,
+                                    fontSize: 16 * widthScaleFactor,
+                                  ),
                                   UseableContainer(
                                     text: "completed".tr,
                                     width: 83 * widthScaleFactor,
                                     color: AppColors.forwardColor,
-                                  )
+                                  ),
                                 ],
                               ),
                               SizedBox(height: 25 * heightScaleFactor),
@@ -380,11 +139,19 @@ class EvaluateResponseScreen2 extends StatelessWidget {
                                 height: 74 * heightScaleFactor,
                                 width: 337 * widthScaleFactor,
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: AppColors.greyColor, width: 1.7 * widthScaleFactor),
-                                  borderRadius: BorderRadius.circular(24 * widthScaleFactor),
+                                  border: Border.all(
+                                    color: AppColors.greyColor,
+                                    width: 1.7 * widthScaleFactor,
+                                  ),
+                                  borderRadius: BorderRadius.circular(
+                                    24 * widthScaleFactor,
+                                  ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.only(left: 19 * widthScaleFactor, top: 22 * heightScaleFactor),
+                                  padding: EdgeInsets.only(
+                                    left: 19 * widthScaleFactor,
+                                    top: 22 * heightScaleFactor,
+                                  ),
                                   child: BoldText(
                                     text: "85",
                                     fontSize: 22 * widthScaleFactor,
@@ -396,37 +163,51 @@ class EvaluateResponseScreen2 extends StatelessWidget {
                                 height: 209 * heightScaleFactor,
                                 width: 337 * widthScaleFactor,
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: AppColors.greyColor, width: 1.7 * widthScaleFactor),
-                                  borderRadius: BorderRadius.circular(24 * widthScaleFactor),
+                                  border: Border.all(
+                                    color: AppColors.greyColor,
+                                    width: 1.7 * widthScaleFactor,
+                                  ),
+                                  borderRadius: BorderRadius.circular(
+                                    24 * widthScaleFactor,
+                                  ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 19 * widthScaleFactor),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 19 * widthScaleFactor,
+                                  ),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(height: 20 * heightScaleFactor),
-                                     BoldText(
-  text: "feedback_optional".tr,
-  fontSize: 20 * widthScaleFactor,
-),
+                                      BoldText(
+                                        text: "feedback_optional".tr,
+                                        fontSize: 20 * widthScaleFactor,
+                                      ),
                                       SizedBox(height: 6 * heightScaleFactor),
-                                     MainText(
-  text: "evaluation_text".tr,
-  fontSize: 14 * widthScaleFactor,
-  height: 1.1,
-),
+                                      MainText(
+                                        text: "evaluation_text".tr,
+                                        fontSize: 14 * widthScaleFactor,
+                                        height: 1.1,
+                                      ),
                                     ],
                                   ),
                                 ),
                               ),
                               SizedBox(height: 15 * heightScaleFactor),
-                              EvaluateResponseScoreBreakContainer(heightScaleFactor: heightScaleFactor, widthScaleFactor: widthScaleFactor),
+                              EvaluateResponseScoreBreakContainer(
+                                heightScaleFactor: heightScaleFactor,
+                                widthScaleFactor: widthScaleFactor,
+                              ),
                             ],
                           ),
                         ),
                       ),
                       SizedBox(height: 12 * heightScaleFactor),
-                      EvaluateResponseTeamProgressContainer(widthScaleFactor: widthScaleFactor, heightScaleFactor: heightScaleFactor),
+                      EvaluateResponseTeamProgressContainer(
+                        widthScaleFactor: widthScaleFactor,
+                        heightScaleFactor: heightScaleFactor,
+                      ),
                       SizedBox(height: 200 * heightScaleFactor),
                       FeedbackContainer(ishow: true),
                       SizedBox(height: 12 * heightScaleFactor),
@@ -436,102 +217,85 @@ class EvaluateResponseScreen2 extends StatelessWidget {
                       SizedBox(height: 26 * heightScaleFactor),
                       LoginButton(
                         onTap: () {
-                  Get.toNamed(RouteName.evaluateResponseScreen);
-                },
-                        text:  "accept_ai_score".tr,
+                          Get.toNamed(RouteName.evaluateResponseScreen);
+                        },
+                        text: "accept_ai_score".tr,
                         color: AppColors.forwardColor,
                         image: Appimages.ai2,
                         ishow: true,
-                        
-  fontSize:ResponsiveFont.getFontSizeCustom(
-    defaultSize: 18.sp,
-    smallSize: 16.sp,
-  ),
 
-                          
-                        imageHeight: 38 .h,
-                        imageWidth: 32 .w,
-                        
+                        fontSize: ResponsiveFont.getFontSizeCustom(
+                          defaultSize: 18.sp,
+                          smallSize: 16.sp,
+                        ),
+
+                        imageHeight: 38.h,
+                        imageWidth: 32.w,
                       ),
-                                          SizedBox(height: 20.h),
+                      SizedBox(height: 20.h),
 
                       LoginButton(
                         onTap: () {
-                  Get.toNamed(RouteName.overViewOptionScreen);
-                },
-                       text: "move_next_stage".tr,
+                          Get.toNamed(RouteName.overViewOptionScreen);
+                        },
+                        text: "move_next_stage".tr,
                         ishow: true,
-                          
-                        imageHeight: 22 .h,
-                        imageWidth: 26 .w,
+
+                        imageHeight: 22.h,
+                        imageWidth: 26.w,
                         icon: Icons.fast_forward,
-                        
-                        
-  fontSize:ResponsiveFont.getFontSizeCustom(
-    defaultSize: 18.sp,
-    smallSize: 16.sp,
-  ),
 
-
-
-                          
+                        fontSize: ResponsiveFont.getFontSizeCustom(
+                          defaultSize: 18.sp,
+                          smallSize: 16.sp,
+                        ),
                       ),
                       SizedBox(height: 20.h),
                       LoginButton(
-                        
-  
+                        fontSize: ResponsiveFont.getFontSizeCustom(
+                          defaultSize: 18.sp,
+                          smallSize: 16.sp,
+                        ),
 
-  fontSize:ResponsiveFont.getFontSizeCustom(
-    defaultSize: 18.sp,
-    smallSize: 16.sp,
-  ),
-
-                          
-                      text: "export_pdf".tr,
+                        text: "export_pdf".tr,
                         ishow: true,
-                        imageHeight: 18 .h,
-                        imageWidth: 18 .w,
+                        imageHeight: 18.h,
+                        imageWidth: 18.w,
                         image: Appimages.export,
-                        
+
                         color: AppColors.redColor,
                       ),
-                                           SizedBox(height: 20.h),
+                      SizedBox(height: 20.h),
 
                       LoginButton(
-                     text: "edit_score_feedback".tr,
-                        
-  
-  fontSize:ResponsiveFont.getFontSizeCustom(
-    defaultSize: 18.sp,
-    smallSize: 16.sp,
-  ),
+                        text: "edit_score_feedback".tr,
 
+                        fontSize: ResponsiveFont.getFontSizeCustom(
+                          defaultSize: 18.sp,
+                          smallSize: 16.sp,
+                        ),
 
                         ishow: true,
                         imageHeight: 22.h,
-                        imageWidth: 22 .w,
+                        imageWidth: 22.w,
                         icon: Icons.edit,
-                        
+
                         color: AppColors.orangeColor,
                       ),
-                         Text("version 3.0"),
+                      Text("version 3.0"),
                       SizedBox(height: 100 * heightScaleFactor),
-
-
-                   
-
                     ],
                   ),
                 ),
               ),
-                Positioned(
-                    right: 0,
-                    top: screenHeight * 0.2,
-                    child: TeamAlphaContainer(screenWidth: screenWidth, screenHeight: screenHeight),
-                  ),
-          
-                  
-                
+              Positioned(
+                right: 0,
+                top: screenHeight * 0.2,
+                child: TeamAlphaContainer(
+                  screenWidth: screenWidth,
+                  screenHeight: screenHeight,
+                ),
+              ),
             ],
           ),
         ),

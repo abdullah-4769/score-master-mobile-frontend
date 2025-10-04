@@ -1,8 +1,7 @@
-
-
 class ApiEndpoints {
-   static const String baseUrl = 'http://192.168.1.7:3000';
-   // Specific endpoints
+  static const String baseUrl = 'http://192.168.1.10:3000';
+
+  // Specific endpoints
   static const String login = '$baseUrl/auth/login';
   static const String register = '$baseUrl/auth/register';
   static const String getFacilitators = '$baseUrl/auth/facilitators';
@@ -11,11 +10,15 @@ class ApiEndpoints {
   static const String postSessionMethod = '$baseUrl/sessions';
   static const String additionalSetting = '$baseUrl/admin/player-capability';
   static const String scheduleAndActiveSession = '$baseUrl/sessions/all';
-  static const String startSession = '$baseUrl/sessions/1/start';
-  static const String resumeSession = '$baseUrl/sessions/1/resume';
-  static const String pauseSession = '$baseUrl/sessions/1/pause';
-  //dynamic endpoints
-  //static const String getFacilitators = '$createGame/facilitators';
+  static const String phaseSession = '$baseUrl/phase-session';
+  static const String gameFormatPhases = '$baseUrl/questions/session/1/game-format';
+  static const String players = '$baseUrl/team/session/1/players';
+  static const String viewResponse = '$baseUrl/player-answers/facilitator/1/phase/1';
+  static const String submitScore = '$baseUrl/evaluation/evaluate';
 
+  // Dynamic endpoints
+  static String getStartSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/start';
+  static String getResumeSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/resume';
+  static String getPauseSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/pause';
+  static String getPhaseSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/phases';
 }
-

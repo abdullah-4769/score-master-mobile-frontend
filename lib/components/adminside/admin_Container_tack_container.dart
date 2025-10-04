@@ -23,17 +23,10 @@ class AdminContainerStackContainer extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: controller.selectedIndex.value == 0
-              ? AppColors.blueColor.withOpacity(0.2)
-              : AppColors.scheColor.withOpacity(0.2),
+              ? AppColors.stackColor.withOpacity(0.2)
+              : AppColors.stackColor.withOpacity(0.2),
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3),
-            ),
-          ],
+
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +44,7 @@ class AdminContainerStackContainer extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: controller.selectedIndex.value == 0
-                      ? AppColors.scheColor
+                      ? AppColors.selectionColor
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -64,7 +57,7 @@ class AdminContainerStackContainer extends StatelessWidget {
                         : FontWeight.normal,
                     color: controller.selectedIndex.value == 0
                         ? Colors.white
-                        : Colors.grey,
+                        : AppColors.languageColor,
                   ),
                 ),
               ),
@@ -81,7 +74,7 @@ class AdminContainerStackContainer extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: controller.selectedIndex.value == 1
-                      ? AppColors.scheColor
+                      ? AppColors.selectionColor
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -94,7 +87,7 @@ class AdminContainerStackContainer extends StatelessWidget {
                         : FontWeight.normal,
                     color: controller.selectedIndex.value == 1
                         ? Colors.white
-                        : Colors.grey,
+                        : AppColors.languageColor,
                   ),
                 ),
               ),
