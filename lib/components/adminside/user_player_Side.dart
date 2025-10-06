@@ -1,97 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-          
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scorer/constants/appcolors.dart';
@@ -102,8 +8,9 @@ import 'package:scorer/widgets/all_players_container.dart';
 
 class UserPlayerSide extends StatelessWidget {
   UserPlayerSide({super.key});
-  
-  final UserManagmentController userController = Get.find<UserManagmentController>();
+
+  final UserManagmentController userController =
+      Get.find<UserManagmentController>();
 
   @override
   Widget build(BuildContext context) {
@@ -111,22 +18,18 @@ class UserPlayerSide extends StatelessWidget {
     final double screenHeight = screenSize.height;
     final double screenWidth = screenSize.width;
 
-    
     const double baseHeight = 812.0;
     const double baseWidth = 414.0;
     final double heightScaleFactor = screenHeight / baseHeight;
     final double widthScaleFactor = screenWidth / baseWidth;
 
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 32 * widthScaleFactor,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 32 * widthScaleFactor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20 * heightScaleFactor),
 
-          
           AllPlayersContainer(
             onTap: () => Get.toNamed(
               RouteName.userPlayerDetailedScree,
@@ -210,7 +113,7 @@ class UserPlayerSide extends StatelessWidget {
             text2: "john.smith@company.com",
             image: Appimages.player2,
           ),
-          SizedBox(height: 30,)
+          SizedBox(height: 30),
         ],
       ),
     );

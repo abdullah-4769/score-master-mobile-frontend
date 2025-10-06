@@ -1,324 +1,18 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:scorer/components/account_info_column.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/constants/appimages.dart';
-import 'package:scorer/view/FacilitateFolder/aa.dart';
 import 'package:scorer/widgets/bold_text.dart';
 import 'package:scorer/widgets/create_container.dart';
 import 'package:scorer/widgets/custom_dashboard_container.dart';
 import 'package:scorer/widgets/login_button.dart';
 import 'package:scorer/widgets/main_text.dart';
-import 'package:scorer/widgets/useable_container.dart';
+import '../../api/api_controllers/stat_user_management.dart';
+import '../../widgets/useable_container.dart';
+import '../FacilitateFolder/aa.dart';
 
 class UserPlayerDetailedScree extends StatelessWidget {
   const UserPlayerDetailedScree({super.key});
@@ -334,10 +28,17 @@ class UserPlayerDetailedScree extends StatelessWidget {
     final double heightScaleFactor = screenHeight / baseHeight;
     final double widthScaleFactor = screenWidth / baseWidth;
 
+    // Initialize the controller
+    final StatsUserManagementController controller = Get.put(StatsUserManagementController());
+
     return Scaffold(
       body: GradientBackground(
         child: SafeArea(
-          child: SingleChildScrollView(
+          child: Obx(() => controller.isLoading.value
+              ? const Center(child: CircularProgressIndicator())
+              : controller.errorMessage.value.isNotEmpty
+              ? Center(child: Text(controller.errorMessage.value))
+              : SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20 * widthScaleFactor),
               child: Column(
@@ -352,21 +53,23 @@ class UserPlayerDetailedScree extends StatelessWidget {
                           left: 0,
                           top: 20 * heightScaleFactor,
                           child: InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: SvgPicture.asset(
-                                Appimages.arrowback,
-                                colorFilter: ColorFilter.mode(
-                                    AppColors.forwardColor, BlendMode.srcIn),
-                                width: 24 .w,
-                                height: 20 .h,
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: SvgPicture.asset(
+                              Appimages.arrowback,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.forwardColor,
+                                BlendMode.srcIn,
                               ),
+                              width: 24.w,
+                              height: 20.h,
                             ),
+                          ),
                         ),
                         Center(
                           child: Image.asset(
-                             Appimages.player2,
+                            Appimages.player2,
                             width: 101 * widthScaleFactor,
                             height: 135 * heightScaleFactor,
                             fit: BoxFit.contain,
@@ -376,12 +79,12 @@ class UserPlayerDetailedScree extends StatelessWidget {
                     ),
                   ),
                   BoldText(
-                    text: "John Smith",
+                    text: controller.statsUserManagement.value.playerInfo?.name ?? 'Unknown',
                     fontSize: 16 * widthScaleFactor,
                     selectionColor: AppColors.blueColor,
                   ),
                   MainText(
-                    text: "john.smith@company.com",
+                    text: controller.statsUserManagement.value.playerInfo?.email ?? 'No email',
                     fontSize: 14 * widthScaleFactor,
                     height: 1.4,
                   ),
@@ -397,14 +100,14 @@ class UserPlayerDetailedScree extends StatelessWidget {
                       Container(
                         width: 9 * widthScaleFactor,
                         height: 9 * widthScaleFactor,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.redColor,
                         ),
                       ),
                       SizedBox(width: 3 * widthScaleFactor),
                       MainText(
-                        text: "Jan 15, 2025",
+                        text: controller.statsUserManagement.value.user?.createdAt?.split('T')[0] ?? 'Unknown',
                         fontSize: 14 * widthScaleFactor,
                         color: AppColors.redColor,
                       ),
@@ -414,29 +117,29 @@ class UserPlayerDetailedScree extends StatelessWidget {
                     text: "active".tr,
                     fontSize: 11,
                     color: AppColors.forwardColor,
-                  
-                    height: 22* heightScaleFactor,
+                    height: 22 * heightScaleFactor,
                   ),
                   SizedBox(height: 24 * heightScaleFactor),
                   Padding(
-                    
                     padding: EdgeInsets.symmetric(horizontal: 12 * widthScaleFactor),
-
                     child: Row(
                       children: [
                         Expanded(
                           child: Container(
                             width: 105,
-                            height: 116 * heightScaleFactor, 
+                            height: 116 * heightScaleFactor,
                             decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.greyColor, width: 1.7 * widthScaleFactor),
+                              border: Border.all(
+                                color: AppColors.greyColor,
+                                width: 1.7 * widthScaleFactor,
+                              ),
                               borderRadius: BorderRadius.circular(24 * widthScaleFactor),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 BoldText(
-                                  text: "47",
+                                  text: controller.statsUserManagement.value.sessionStats?.totalSessions.toString() ?? '0',
                                   selectionColor: AppColors.redColor,
                                   fontSize: 0.06 * screenWidth,
                                 ),
@@ -453,23 +156,26 @@ class UserPlayerDetailedScree extends StatelessWidget {
                         SizedBox(width: 10 * widthScaleFactor),
                         Expanded(
                           child: Container(
-                             width: 105,
-                            height: 116 * heightScaleFactor, 
+                            width: 105,
+                            height: 116 * heightScaleFactor,
                             decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.greyColor, width: 1.7 * widthScaleFactor),
+                              border: Border.all(
+                                color: AppColors.greyColor,
+                                width: 1.7 * widthScaleFactor,
+                              ),
                               borderRadius: BorderRadius.circular(24 * widthScaleFactor),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 BoldText(
-                                  text: "285",
+                                  text: controller.statsUserManagement.value.recentSessions?.length.toString() ?? '0',
                                   selectionColor: AppColors.forwardColor,
                                   fontSize: 0.06 * screenWidth,
                                 ),
                                 BoldText(
                                   textAlign: TextAlign.center,
-                                  text:  "manage_players".tr,
+                                  text: "manage_players".tr,
                                   fontSize: 0.04 * screenWidth,
                                   selectionColor: AppColors.blueColor,
                                 ),
@@ -477,20 +183,22 @@ class UserPlayerDetailedScree extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10 * widthScaleFactor),
                         Expanded(
                           child: Container(
-                             width: 105,
-                            height: 116 * heightScaleFactor,  
+                            width: 105,
+                            height: 116 * heightScaleFactor,
                             decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.greyColor, width: 1.7 * widthScaleFactor),
+                              border: Border.all(
+                                color: AppColors.greyColor,
+                                width: 1.7 * widthScaleFactor,
+                              ),
                               borderRadius: BorderRadius.circular(24 * widthScaleFactor),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 BoldText(
-                                  text: "96%",
+                                  text: "${controller.statsUserManagement.value.sessionStats?.avgScore ?? 0}%",
                                   selectionColor: AppColors.redColor,
                                   fontSize: 0.06 * screenWidth,
                                 ),
@@ -508,65 +216,74 @@ class UserPlayerDetailedScree extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 33 * heightScaleFactor),
-                AccountInfoClumn(widthScaleFactor: widthScaleFactor, heightScaleFactor: heightScaleFactor,
-                text: "Player Level",
-                ),
+                Obx(() => AccountInfoClumn(
+                  widthScaleFactor: widthScaleFactor,
+                  heightScaleFactor: heightScaleFactor,
+                  email: controller.statsUserManagement.value.user?.email,
+                  phone: controller.statsUserManagement.value.user?.phone,
+                  joinDate: controller.statsUserManagement.value.user?.createdAt != null
+                      ? controller.statsUserManagement.value.user!.createdAt!.split("T")[0] // only date
+                      : null,
+                  levelText: "Level 3",
+                )),
                   SizedBox(height: 20 * heightScaleFactor),
-
-
-
                   BoldText(
-                    text:  "recent_sessions".tr,
+                    text: "recent_sessions".tr,
                     selectionColor: AppColors.blueColor,
                     fontSize: 16 * widthScaleFactor,
                   ),
                   SizedBox(height: 20 * heightScaleFactor),
-
-                  CustomDashboardContainer(
-                    mainWidth: 376 * widthScaleFactor,
-                    right: 10 * widthScaleFactor,
-                    mainHeight: 228 * heightScaleFactor,
-                    color2: AppColors.forwardColor,
-                    color1: AppColors.orangeColor,
-                    heading: "Team Building Workshop",
-                    text1: "Phase 2",
-                    height: 5* heightScaleFactor,
-                    text2: "active".tr,
-                    text6: "2nd Position",
-                    smallImage: Appimages.Crown,
-                    description: "Eranove Odyssey sessions immerse teams in fast-paced, collaborative challenges with real-time scoring and progression.",
-                    icon1: Icons.play_arrow,
-                    text5: "12 Players",
-                    isshow: true,
-                  ),
-                  SizedBox(height: 12 * heightScaleFactor),
-                  CustomDashboardContainer(
-                    mainWidth: 376 * widthScaleFactor,
-                    right: 10 * widthScaleFactor,
-                    mainHeight: 228 * heightScaleFactor,
-                    color2: AppColors.forwardColor,
-                    color1: AppColors.orangeColor,
-                    heading: "Team Building Workshop",
-                    text1: "Phase 2",
-                    height: 5 * heightScaleFactor,
-                    text2: "active".tr,
-                    text6: "2nd Position",
-                    smallImage: Appimages.Crown,
-                    description: "Eranove Odyssey sessions immerse teams in fast-paced, collaborative challenges with real-time scoring and progression.",
-                    icon1: Icons.play_arrow,
-                    text5: "12 Players",
-                    isshow: true,
-                  ),
-
+                  // Display recent sessions dynamically
+                  if (controller.statsUserManagement.value.recentSessions != null)
+                    ...controller.statsUserManagement.value.recentSessions!.map((session) => Column(
+                      children: [
+                        CustomDashboardContainer(
+                          mainWidth: 376 * widthScaleFactor,
+                          right: 10 * widthScaleFactor,
+                          mainHeight: 228 * heightScaleFactor,
+                          color2: AppColors.forwardColor,
+                          color1: AppColors.orangeColor,
+                          heading: session.sessionName ?? 'Unnamed Session',
+                          text1: session.status != null ? "Phase ${session.totalPhases}" : 'No Phase',
+                          height: 5 * heightScaleFactor,
+                          text2: session.status ?? "Unknown",
+                          text6: "${session.rank} Position",
+                          smallImage: Appimages.Crown,
+                          description: session.sessionDescription ?? 'No description',
+                          icon1: Icons.play_arrow,
+                          text5: "${session.totalPlayers} Players",
+                          isshow: true,
+                        ),
+                        SizedBox(height: 12 * heightScaleFactor),
+                      ],
+                    )).toList(),
                   SizedBox(height: 20 * heightScaleFactor),
-LoginButton(text: "delete_player".tr,ishow: true,image: Appimages.delete,fontSize: 20,color: AppColors.redColor,),
-   SizedBox(height: 20 * heightScaleFactor),
-LoginButton(text: "edit_player".tr,ishow: true,icon: Icons.edit,fontSize: 20,color: AppColors.forwardColor,),
+                  LoginButton(
+                    text: "delete_player".tr,
+                    ishow: true,
+                    image: Appimages.delete,
+                    fontSize: 20,
+                    color: AppColors.redColor,
+                    // onPressed: () {
+                    //   // Implement delete player logic
+                    // },
+                  ),
+                  SizedBox(height: 20 * heightScaleFactor),
+                  LoginButton(
+                    text: "edit_player".tr,
+                    ishow: true,
+                    icon: Icons.edit,
+                    fontSize: 20,
+                    color: AppColors.forwardColor,
+                    // onPressed: () {
+                    //   // Implement edit player logic
+                    // },
+                  ),
                   SizedBox(height: 42 * heightScaleFactor),
                 ],
               ),
             ),
-          ),
+          )),
         ),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/constants/appimages.dart';
 import 'package:scorer/widgets/bold_text.dart';
+
 class EngagementContainer extends StatelessWidget {
   const EngagementContainer({
     super.key,
@@ -17,10 +18,7 @@ class EngagementContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        
-        right: 23* widthScaleFactor,
-      ),
+      padding: EdgeInsets.only(right: 23 * widthScaleFactor),
       child: Row(
         children: [
           Image.asset(
@@ -38,10 +36,7 @@ class EngagementContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24 * widthScaleFactor),
               ),
               child: Padding(
-                padding: EdgeInsets.only(
-                  
-                  left: 10 * widthScaleFactor,
-                ),
+                padding: EdgeInsets.only(left: 10 * widthScaleFactor),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,7 +46,7 @@ class EngagementContainer extends StatelessWidget {
                         BoldText(
                           text: "12",
                           selectionColor: AppColors.forwardColor,
-                          fontSize: 22 .sp,
+                          fontSize: 22.sp,
                         ),
                         SizedBox(width: 8 * widthScaleFactor),
                         Container(
@@ -63,19 +58,17 @@ class EngagementContainer extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 6 * widthScaleFactor),
-                      
-Expanded(
-  child: FittedBox(
-    fit: BoxFit.scaleDown,
-    alignment: Alignment.centerLeft,
-    child: BoldText(
-      text: "active_players".tr,
-      selectionColor: AppColors.blueColor,
-      fontSize: 16 .sp,
-    ),
-  ),
-),
-    
+                        Expanded(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: BoldText(
+                              text: "active_players".tr,
+                              selectionColor: AppColors.blueColor,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 10 * heightScaleFactor),
@@ -85,7 +78,7 @@ Expanded(
                         BoldText(
                           text: "89%",
                           selectionColor: AppColors.forwardColor,
-                          fontSize: 22 .sp,
+                          fontSize: 22.sp,
                         ),
                         SizedBox(width: 6 * widthScaleFactor),
                         Container(
@@ -97,100 +90,24 @@ Expanded(
                           ),
                         ),
                         SizedBox(width: 5 * widthScaleFactor),
-                       Expanded(
-  child: FittedBox(
-    fit: BoxFit.scaleDown,
-    alignment: Alignment.centerLeft,
-    child: BoldText(
-      text: "engagement".tr,
-      selectionColor: AppColors.blueColor,
-      fontSize: 16 .sp,
-    ),
-  ),
-),
+                        Expanded(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: BoldText(
+                              text: "engagement".tr,
+                              selectionColor: AppColors.blueColor,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
-          )
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+          ),
         ],
       ),
     );

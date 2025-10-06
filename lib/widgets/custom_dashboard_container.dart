@@ -104,7 +104,7 @@ class CustomDashboardContainer extends StatelessWidget {
             horizontal: horizontal ?? 32 * widthScaleFactor,
           ),
           height: mainHeight ?? 288,
-          width: mainWidth ?? 334 * widthScaleFactor,
+          // width: mainWidth ?? 334 * widthScaleFactor,
           decoration: BoxDecoration(
             border: Border.all(
               color: AppColors.greyColor,

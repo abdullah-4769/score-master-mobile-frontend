@@ -1,249 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                          
-
-
-
-
-
-
-
-
-
-
-
-
-
-                          
-
-
-
-
-
-
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                     
-
-
-
-
-
-
-
-
-                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                     
-
-
-
-                    
-                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scorer/components/engagement_Container.dart';
@@ -272,23 +26,29 @@ class OverViewScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             BoldText(
-  text: "session_info".tr,
-  selectionColor: AppColors.blueColor,
-  fontSize: 16 * heightScaleFactor,
-),
+              BoldText(
+                text: "session_info".tr,
+                selectionColor: AppColors.blueColor,
+                fontSize: 16 * heightScaleFactor,
+              ),
               MainText(
-  text: "session_description".tr,
-  fontSize: 14 * heightScaleFactor,
-  height: 1.5,
-),
+                text: "session_description".tr,
+                fontSize: 14 * heightScaleFactor,
+                height: 1.5,
+              ),
             ],
           ),
         ),
         SizedBox(height: 20 * heightScaleFactor),
-        EngagementContainer(widthScaleFactor: widthScaleFactor, heightScaleFactor: heightScaleFactor),
+        EngagementContainer(
+          widthScaleFactor: widthScaleFactor,
+          heightScaleFactor: heightScaleFactor,
+        ),
         SizedBox(height: 10 * heightScaleFactor),
-        NewSessionContainer(widthScaleFactor: widthScaleFactor, heightScaleFactor: heightScaleFactor)
+        NewSessionContainer(
+          widthScaleFactor: widthScaleFactor,
+          heightScaleFactor: heightScaleFactor,
+        ),
       ],
     );
   }

@@ -1,5 +1,5 @@
 class ApiEndpoints {
-  static const String baseUrl = 'http://192.168.1.10:3000';
+  static const String baseUrl = 'http://192.168.1.5:3000';
 
   // Specific endpoints
   static const String login = '$baseUrl/auth/login';
@@ -15,8 +15,14 @@ class ApiEndpoints {
   static const String players = '$baseUrl/team/session/1/players';
   static const String viewResponse = '$baseUrl/player-answers/facilitator/1/phase/1';
   static const String submitScore = '$baseUrl/evaluation/evaluate';
+  static const String analysis = '$baseUrl/scores/1/analytics';
+  static const String userManagementStat = '$baseUrl/user/4/stats';
+  static const String facilitatorManagementStat = '$baseUrl/user/1/facilitator-stats';
 
   // Dynamic endpoints
+  // Dynamic session detail endpoint
+  static String sessionDetail(int sessionId) =>
+      "$baseUrl/sessions/$sessionId/detail";
   static String getStartSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/start';
   static String getResumeSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/resume';
   static String getPauseSessionUrl(int sessionId) => '$baseUrl/sessions/$sessionId/pause';
