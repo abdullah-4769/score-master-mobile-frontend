@@ -1,3 +1,187 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import 'package:flutter/material.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/constants/appimages.dart';
@@ -29,17 +213,17 @@ class _TeamAlphaContainerState extends State<TeamAlphaContainer> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                isExpanded = !isExpanded;
+                isExpanded = !isExpanded; 
               });
             },
             child: AnimatedContainer(
               duration: Duration(milliseconds: 300),
               curve: Curves.easeInOut,
-
+              
               width: isExpanded
                   ? widget.screenWidth * 0.4
-                  : widget.screenWidth * 0.05,
-              height: widget.screenHeight * 0.07,
+                  : widget.screenWidth * 0.05, 
+              height: widget.screenHeight * 0.07, 
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(widget.screenWidth * 0.03),
@@ -51,15 +235,15 @@ class _TeamAlphaContainerState extends State<TeamAlphaContainer> {
                 clipBehavior: Clip.none,
                 children: [
                   if (isExpanded)
-                    Positioned(
-                      top: -widget.screenHeight * 0.03,
-                      left: -widget.screenWidth * 0.06,
-                      child: Image.asset(
-                        Appimages.man3,
-                        width: widget.screenWidth * 0.21,
-                        height: widget.screenWidth * 0.25,
-                      ),
-                    ),
+                Positioned(
+  top: -widget.screenHeight * 0.03,   
+  left: -widget.screenWidth * 0.06,   
+  child: Image.asset(
+    Appimages.man3,
+    width: widget.screenWidth * 0.21, 
+    height: widget.screenWidth * 0.25, 
+  ),
+),
 
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -67,9 +251,8 @@ class _TeamAlphaContainerState extends State<TeamAlphaContainer> {
                       if (isExpanded)
                         Padding(
                           padding: EdgeInsets.only(
-                            left: widget.screenWidth * 0.05,
-                            top: widget.screenHeight * 0.01,
-                          ),
+                              left: widget.screenWidth * 0.05,
+                              top: widget.screenHeight * 0.01),
                           child: MainText(
                             text: "Team Alpha",
                             fontFamily: "gotham",
@@ -108,3 +291,4 @@ class _TeamAlphaContainerState extends State<TeamAlphaContainer> {
     );
   }
 }
+

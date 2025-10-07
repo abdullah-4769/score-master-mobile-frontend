@@ -506,7 +506,7 @@ class EndSessionScreen extends StatelessWidget {
                       SizedBox(height: 30 * heightScaleFactor),
                       CustomSessionContainer(heightScaleFactor: heightScaleFactor, widthScaleFactor: widthScaleFactor),
                       SizedBox(height: 100 * heightScaleFactor),
-                      PlayersRow(isTeamSelected: false),
+                      PlayersRow(isTeamSelected: false, topThree: [],),
                       SizedBox(height: 25 * heightScaleFactor),
                       PlayersContainers(
                         text1: "2",

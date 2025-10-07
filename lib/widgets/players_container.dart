@@ -183,6 +183,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/widgets/bold_text.dart';
@@ -230,14 +231,14 @@ class PlayersContainers extends StatelessWidget {
     
     final containerWidth = screenWidth * 0.9;
     final containerHeight = containerWidth * (65 / 330);
-    final horizontalPadding = containerWidth * (30 / 330);
+    final horizontalPadding = containerWidth * (28 / 330);
 
     final iconSize = containerWidth * 0.06;
     final imageSize = containerWidth * (40 / 330);
 
-    final text1FontSize = containerWidth * 0.045;
-    final text2FontSize = containerWidth * 0.04;
-    final text4FontSize = containerWidth * 0.045;
+    final text1FontSize = containerWidth * 0.044;
+    final text2FontSize = containerWidth * 0.039;
+    final text4FontSize = containerWidth * 0.044;
 
     final gapSmall = containerWidth * 0.02;
     final gapMedium = containerWidth * 0.05;
@@ -272,7 +273,7 @@ class PlayersContainers extends StatelessWidget {
                   selectionColor: AppColors.blueColor,
                   fontSize: text1FontSize,
                 ),
-                SizedBox(width: gapMedium),
+                SizedBox(width: gapSmall),
                 Image.asset(
                   image,
                   height: imageheight ?? imageSize,
@@ -296,6 +297,7 @@ class PlayersContainers extends StatelessWidget {
                 child: UseableContainer(
                   text: text3 ?? "submitted".tr,
                   width: width1 ?? containerWidth * 0.23,
+                  height: 35.h,
                   color: color ?? AppColors.forwardColor,
                 ),
               ),

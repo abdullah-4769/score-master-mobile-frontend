@@ -43,10 +43,6 @@ class CustomDashboardContainer extends StatelessWidget {
   final double? mainHeight;
   final bool arrowshow;
   final VoidCallback? onTap;
-  final VoidCallback? onTapResume;
-  final VoidCallback? onTapNextPhase;
-  final VoidCallback? onTapPause;
-  final VoidCallback? onTapStartEarly;
 
   const CustomDashboardContainer({
     super.key,
@@ -80,10 +76,6 @@ class CustomDashboardContainer extends StatelessWidget {
     this.mainHeight,
     this.arrowshow = true,
     this.onTap,
-    this.onTapResume,
-    this.onTapNextPhase,
-    this.onTapPause,
-    this.onTapStartEarly,
   });
 
   bool get isSpanish => Get.locale?.languageCode == "es";
@@ -103,7 +95,6 @@ class CustomDashboardContainer extends StatelessWidget {
           margin: EdgeInsets.symmetric(
             horizontal: horizontal ?? 32 * widthScaleFactor,
           ),
-          height: mainHeight ?? 288,
           width: mainWidth ?? 334 * widthScaleFactor,
           decoration: BoxDecoration(
             border: Border.all(
@@ -115,13 +106,13 @@ class CustomDashboardContainer extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 29 * heightScaleFactor),
+              SizedBox(height: 24 * heightScaleFactor),
               BoldText(
                 text: heading,
                 selectionColor: AppColors.blueColor,
                 fontSize: 16 * heightScaleFactor,
               ),
-              SizedBox(height: 7 * heightScaleFactor),
+              SizedBox(height: 12 * heightScaleFactor),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -132,7 +123,7 @@ class CustomDashboardContainer extends StatelessWidget {
                     text: text1,
                     color: color1 ?? AppColors.orangeColor,
                   ),
-                  SizedBox(width: 6 * widthScaleFactor),
+                  SizedBox(width: 8 * widthScaleFactor),
                   UseableContainer(
                     fontSize: 10,
                     height: height2,
@@ -142,14 +133,14 @@ class CustomDashboardContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10 * heightScaleFactor),
+              SizedBox(height: 12 * heightScaleFactor),
               MainText(
                 text: description,
                 textAlign: TextAlign.center,
                 height: 1.3,
                 fontSize: 14 * heightScaleFactor,
               ),
-              SizedBox(height: (height ?? 10) * heightScaleFactor),
+              SizedBox(height: 16 * heightScaleFactor),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -160,13 +151,14 @@ class CustomDashboardContainer extends StatelessWidget {
                         height: 28 * heightScaleFactor,
                         width: 26 * widthScaleFactor,
                       ),
+                      SizedBox(width: 6 * widthScaleFactor),
                       MainText(
                         text: text5 ?? "players_12".tr,
                         fontSize: 14 * heightScaleFactor,
                       ),
                     ],
                   ),
-                  SizedBox(width: 9 * widthScaleFactor),
+                  SizedBox(width: 16 * widthScaleFactor),
                   Row(
                     children: [
                       if (smallImage?.endsWith('.svg') ?? false)
@@ -188,79 +180,74 @@ class CustomDashboardContainer extends StatelessWidget {
                         color: AppColors.redColor,
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
-              Spacer(),
-              isshow
-                  ? SizedBox()
-                  : ishow
-                  ? Padding(
-                padding: EdgeInsets.symmetric(horizontal: 17 * widthScaleFactor),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: PauseContainer(
-                        onTap: onTapResume,
-                        height: 35,
-                        fontSize: ResponsiveFont.getFontSizeCustom(
-                          defaultSize: 13 * widthScaleFactor,
-                          smallSize: 11 * widthScaleFactor,
+              SizedBox(height: 16 * heightScaleFactor),
+              if (!isshow)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 17 * widthScaleFactor),
+                  child: ishow
+                      ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: PauseContainer(
+                          height: 35,
+                          fontSize: ResponsiveFont.getFontSizeCustom(
+                            defaultSize: 13 * widthScaleFactor,
+                            smallSize: 11 * widthScaleFactor,
+                          ),
+                          text: text3 ?? "",
+                          icon: icon1,
                         ),
-                        text: text3 ?? "",
-                        icon: icon1,
                       ),
-                    ),
-                    SizedBox(width: 10 * widthScaleFactor),
-                    Expanded(
-                      child: PauseContainer(
-                        onTap: onTapNextPhase,
-                        fontSize: ResponsiveFont.getFontSizeCustom(
-                          defaultSize: 13 * widthScaleFactor,
-                          smallSize: 11 * widthScaleFactor,
+                      SizedBox(width: 10 * widthScaleFactor),
+                      Expanded(
+                        child: PauseContainer(
+                          fontSize: ResponsiveFont.getFontSizeCustom(
+                            defaultSize: 13 * widthScaleFactor,
+                            smallSize: 11 * widthScaleFactor,
+                          ),
+                          height: 35,
+                          color: AppColors.forwardColor,
+                          text: text4 ?? "",
+                          icon: icon2,
                         ),
-                        height: 35,
-                        color: AppColors.forwardColor,
-                        text: text4 ?? "",
-                        icon: icon2,
                       ),
-                    ),
-                  ],
+                    ],
+                  )
+                      : PauseContainer(
+                    onTap: onTap,
+                    height: 45.h,
+                    width: 280.w,
+                    color: color3,
+                    text: text7 ?? "",
+                    icon: icon3,
+                    svgPath: svg,
+                  ),
                 ),
-              )
-                  : Padding(
-                padding: EdgeInsets.symmetric(horizontal: 17 * widthScaleFactor),
-                child: PauseContainer(
-                  onTap: onTapStartEarly ?? onTapPause,
-                  height: 35.h,
-                  width: 300.w,
-                  color: color3,
-                  text: text7 ?? text3 ?? "",
-                  icon: icon3,
-                  svgPath: svg,
-                ),
-              ),
-              SizedBox(height: 14 * heightScaleFactor),
+              SizedBox(height: 16 * heightScaleFactor),
             ],
           ),
         ),
-        arrowshow
-            ? Positioned(
-          top: 36 * heightScaleFactor,
-          right: right ?? 9 * widthScaleFactor,
-          child: AddOneContainer(
-            onTap: onTap,
-            svgPath: Appimages.forward,
-            width: 13 * widthScaleFactor,
-            height: 14 * heightScaleFactor,
-            height1: 46 * heightScaleFactor,
-            height2: 32.5 * heightScaleFactor,
-            width1: 46 * widthScaleFactor,
-            width2: 32.5 * widthScaleFactor,
+
+        // Arrow button only appears when arrowshow is true
+        if (arrowshow)
+          Positioned(
+            top: 36 * heightScaleFactor,
+            right: right ?? 9 * widthScaleFactor,
+            child: AddOneContainer(
+              onTap: onTap,
+              svgPath: Appimages.forward,
+              width: 13 * widthScaleFactor,
+              height: 14 * heightScaleFactor,
+              height1: 46 * heightScaleFactor,
+              height2: 32.5 * heightScaleFactor,
+              width1: 46 * widthScaleFactor,
+              width2: 32.5 * widthScaleFactor,
+            ),
           ),
-        )
-            : SizedBox(),
       ],
     );
   }

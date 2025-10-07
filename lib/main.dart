@@ -20,16 +20,25 @@ import 'package:scorer/view/playerfolder/player_login_play_side.dart';
 import 'package:scorer/view/playerfolder/submit_response_Screen2.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'api/api_controllers/create_game_format_controller.dart';
+import 'api/api_controllers/question_controller.dart';
+import 'api/api_controllers/session_controller.dart';
 import 'controllers/bottom_nav_controller.dart';
+import 'controllers/overview_controller.dart';
 void main() async {
-  Get.put(CreateGameFormatController(), permanent: true);
+
+  Get.put(QuestionController());
+  Get.put(BottomNavController(), permanent: true);
+
+
+  Get.put(SessionController());
+
   WidgetsFlutterBinding.ensureInitialized();
+
   final savedLocale = await TranslationService().getSavedLocale();
   runApp(MyApp(locale: savedLocale));
   await GetStorage.init();
 
-  Get.put(BottomNavController(), permanent: true);
+
 }
 
 class MyApp extends StatelessWidget {
@@ -39,11 +48,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(402, 874), 
+      designSize: const Size(402, 874),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
+
           debugShowCheckedModeBanner: false,
           translations: AppTranslations(),
           locale: locale,

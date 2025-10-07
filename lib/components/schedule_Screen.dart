@@ -1,40 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scorer/constants/appimages.dart';
@@ -54,22 +17,6 @@ class ScheduleScreen extends StatelessWidget {
       children: [
         SizedBox(height: 12 * heightScaleFactor),
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-
           CustomDashboardContainer(
         text7: "start_early".tr,
           icon3: Icons.fast_forward,

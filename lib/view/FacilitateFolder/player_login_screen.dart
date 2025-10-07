@@ -99,7 +99,7 @@ class PlayerLoginScreen extends StatelessWidget {
 
                   SizedBox(height: 30 * heightScaleFactor),
                   Obx(() => authController.isLoading.value
-                      ? const CircularProgressIndicator()
+                      ? Center(child: const CircularProgressIndicator())
                       : LoginButton(
                     text: "login".tr,
                     fontSize: 20.sp,

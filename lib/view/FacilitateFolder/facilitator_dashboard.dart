@@ -18,7 +18,14 @@ import 'package:scorer/widgets/setting_container.dart';
 
 class FacilitatorDashboard extends StatelessWidget {
   final controller = Get.put(FacilDashboardController());
-  FacilitatorDashboard({super.key});
+
+  FacilitatorDashboard({super.key}) {
+    print("FacilitatorDashboard: Controller created or retrieved");
+    // Listen to changes in selectedIndex
+    ever(controller.selectedIndex, (value) {
+      print("FacilDashboardController: selectedIndex changed to $value");
+    });
+  }
 
   final List<Widget> screens = [
     ActiveSessionScreen(),
@@ -27,12 +34,12 @@ class FacilitatorDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    print("FacilitatorDashboard: build called");
+
     final Size screenSize = MediaQuery.of(context).size;
     final double screenHeight = screenSize.height;
     final double screenWidth = screenSize.width;
 
-    
     const double baseHeight = 812.0;
     const double baseWidth = 414.0;
     final double heightScaleFactor = screenHeight / baseHeight;
@@ -68,9 +75,10 @@ class FacilitatorDashboard extends StatelessWidget {
                                 ishow: true,
                               ),
                               SizedBox(width: 6 * widthScaleFactor),
-                              AddOneContainer(icon: Icons.add,onTap: () {
+                              AddOneContainer(icon: Icons.add, onTap: () {
+                                print("AddOneContainer tapped, navigating to createNewSessionScreen");
                                 Get.toNamed(RouteName.createNewSessionScreen);
-                              },),
+                              }),
                             ],
                           ),
                         ],
@@ -95,34 +103,40 @@ class FacilitatorDashboard extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                        BoldText(
-  text: "welcome_back".tr,
-  fontSize: 16 * heightScaleFactor,
-  selectionColor: AppColors.blueColor,
-),
-                           BoldText(
+                          BoldText(
+                            text: "welcome_back".tr,
+                            fontSize: 16 * heightScaleFactor,
+                            selectionColor: AppColors.blueColor,
+                          ),
+                          BoldText(
                             text: " Adam!",
                             fontSize: 16 * heightScaleFactor,
                             selectionColor: AppColors.blueColor,
                           ),
                         ],
                       ),
-                    
-MainText(
-  text: "manage_sessions".tr,
-  fontSize: 14 * heightScaleFactor,
-  height: 1.4,
-),
-                      SizedBox(height: 23 * heightScaleFactor),
-                      Obx(
-                        () => FacilDashBoardStackContainer(heightScaleFactor: heightScaleFactor, widthScaleFactor: widthScaleFactor, controller: controller),
+
+                      MainText(
+                        text: "manage_sessions".tr,
+                        fontSize: 14 * heightScaleFactor,
+                        height: 1.4,
                       ),
+                      SizedBox(height: 23 * heightScaleFactor),
+                      Obx(() {
+                        print("Obx: Building FacilDashBoardStackContainer with selectedIndex: ${controller.selectedIndex.value}");
+                        return FacilDashBoardStackContainer(
+                          heightScaleFactor: heightScaleFactor,
+                          widthScaleFactor: widthScaleFactor,
+                          controller: controller,
+                        );
+                      }),
                     ],
                   ),
                 ),
-                Obx(
-                  () => screens[controller.selectedIndex.value],
-                ),
+                Obx(() {
+                  print("Obx: Displaying screen at index: ${controller.selectedIndex.value}");
+                  return screens[controller.selectedIndex.value];
+                }),
               ],
             ),
           ),

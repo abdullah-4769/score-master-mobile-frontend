@@ -52,11 +52,11 @@ class NewSessionContainer extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     MainText(text: "session_code".tr, fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 12.sp,
+                      MainText(text: "session_code".tr, fontSize: ResponsiveFont.getFontSizeCustom(
+                        defaultSize: 14.sp,
+                        smallSize: 12.sp,
 
-                     )),
+                      )),
                       Row(
                         children: [
                           BoldText(
@@ -76,20 +76,20 @@ smallSize: 12.sp,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     MainText(text: "join_link".tr,  fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 12.sp,
+                      MainText(text: "join_link".tr,  fontSize: ResponsiveFont.getFontSizeCustom(
+                        defaultSize: 14.sp,
+                        smallSize: 12.sp,
 
-                     )),
+                      )),
 
                       Row(
                         children: [
                           BoldText(
                             text: "https:/www.score.com",
-                           fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 12.sp,
-                     ),
+                            fontSize: ResponsiveFont.getFontSizeCustom(
+                              defaultSize: 14.sp,
+                              smallSize: 12.sp,
+                            ),
                             selectionColor: AppColors.blueColor,
                           ),
                           SizedBox(width: 10 * widthScaleFactor),
@@ -104,11 +104,11 @@ smallSize: 12.sp,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    MainText(text: "started".tr, fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 12.sp,
+                      MainText(text: "started".tr, fontSize: ResponsiveFont.getFontSizeCustom(
+                        defaultSize: 14.sp,
+                        smallSize: 12.sp,
 
-                     )),
+                      )),
 
                       BoldText(
                         text: "2:30 PM",
@@ -122,10 +122,10 @@ smallSize: 12.sp,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MainText(text: "duration".tr, fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 12.sp,
+                        defaultSize: 14.sp,
+                        smallSize: 12.sp,
 
-                     )),
+                      )),
 
                       BoldText(
                         text: "45 minutes",
@@ -162,11 +162,11 @@ smallSize: 12.sp,
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                           BoldText(
-  text: "current_phase".tr,
-  fontSize: 16 * heightScaleFactor,
-  selectionColor: AppColors.blueColor,
-),
+                              BoldText(
+                                text: "current_phase".tr,
+                                fontSize: 16 * heightScaleFactor,
+                                selectionColor: AppColors.blueColor,
+                              ),
                               Row(
                                 children: [
                                   UseableContainer(
@@ -174,50 +174,50 @@ smallSize: 12.sp,
                                     text: "Phase 2",
                                     color: AppColors.orangeColor,
                                     fontSize: 10 .sp,
-                                    
+
                                   ),
                                   SizedBox(width: 7* widthScaleFactor),
-                          MainText(
-  text: "strategy_building".tr,
-    fontSize: ResponsiveFont.getFontSizeCustom(
-defaultSize: 14.sp,
-smallSize: 12.sp,
+                                  MainText(
+                                      text: "strategy_building".tr,
+                                      fontSize: ResponsiveFont.getFontSizeCustom(
+                                        defaultSize: 14.sp,
+                                        smallSize: 12.sp,
 
-                     ) 
-)
+                                      )
+                                  )
 
                                 ],
                               )
                             ],
                           ),
-                        CircularPercentIndicator(
-      radius:  ResponsiveFont.getFontSizeCustom(
-defaultSize: 40*widthScaleFactor,
-smallSize: 34*widthScaleFactor,
+                          CircularPercentIndicator(
+                            radius:  ResponsiveFont.getFontSizeCustom(
+                              defaultSize: 40*widthScaleFactor,
+                              smallSize: 34*widthScaleFactor,
 
-                     ),
-        lineWidth: 4.0, 
-        percent: 0.7, 
-        animation: true,
-        animationDuration: 500,
-        circularStrokeCap: CircularStrokeCap.round,
-        backgroundColor: Colors.transparent,
-        progressColor: AppColors.forwardColor,
-        center: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             BoldText(
-                  text: "12:32",
-                  fontSize: screenWidth * 0.04,
-                  selectionColor: AppColors.blueColor),
-             MainText(
-  text: "remaining".tr,
-  fontSize: screenWidth * 0.025,
-  height: 1,
-),
-          ],
-        ),
-      ),
+                            ),
+                            lineWidth: 4.0,
+                            percent: 0.7,
+                            animation: true,
+                            animationDuration: 500,
+                            circularStrokeCap: CircularStrokeCap.round,
+                            backgroundColor: Colors.transparent,
+                            progressColor: AppColors.forwardColor,
+                            center: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                BoldText(
+                                    text: "12:32",
+                                    fontSize: screenWidth * 0.04,
+                                    selectionColor: AppColors.blueColor),
+                                MainText(
+                                  text: "remaining".tr,
+                                  fontSize: screenWidth * 0.025,
+                                  height: 1,
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 20 * heightScaleFactor),
@@ -229,7 +229,7 @@ smallSize: 34*widthScaleFactor,
                             decoration: BoxDecoration(
                               color: AppColors.forwardColor,
                               borderRadius:
-                                  BorderRadius.circular(20 * widthScaleFactor),
+                              BorderRadius.circular(20 * widthScaleFactor),
                             ),
                           ),
                           Container(
@@ -238,7 +238,7 @@ smallSize: 34*widthScaleFactor,
                             decoration: BoxDecoration(
                               color: AppColors.greyColor,
                               borderRadius:
-                                  BorderRadius.circular(20 * widthScaleFactor),
+                              BorderRadius.circular(20 * widthScaleFactor),
                             ),
                           ),
                         ],
@@ -249,10 +249,10 @@ smallSize: 34*widthScaleFactor,
                         children: [
                           Expanded(
                             child: PauseContainer(
-  text: "pause".tr,
-  
-  width: 140.w,
-),
+                              text: "pause".tr,
+
+                              width: 140.w,
+                            ),
                           ),
                           SizedBox(width: 20 * widthScaleFactor),
                           Expanded(
@@ -260,7 +260,7 @@ smallSize: 34*widthScaleFactor,
                               text: "next_phase".tr,
                               icon: Icons.fast_forward,
                               color: AppColors.forwardColor,
-                              
+
                               width: 140 .w,
                             ),
                           ),
@@ -269,25 +269,6 @@ smallSize: 34*widthScaleFactor,
                     ],
                   ),
                 ),
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
               ],
             ),
           ),

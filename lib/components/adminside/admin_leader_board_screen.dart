@@ -108,7 +108,7 @@ class AdminLeaderBoardScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: screenHeight * 0.1),
-            Obx(() => PlayersRow(isTeamSelected: isTeamSelected.value)),
+            Obx(() => PlayersRow(isTeamSelected: isTeamSelected.value, topThree: [],)),
             SizedBox(height: screenHeight * 0.04),
             Obx(
               () => PlayersContainers(
