@@ -1,35 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scorer/constants/appcolors.dart';
@@ -57,7 +26,7 @@ class UseableContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     final Size screenSize = MediaQuery.of(context).size;
     final double baseHeight = 812.0;
     final double baseWidth = 414.0;

@@ -18,7 +18,13 @@ import 'aa.dart';
 class FacilitatorDashboard extends StatelessWidget {
   final controller = Get.put(FacilDashboardController());
 
-  FacilitatorDashboard({super.key});
+  FacilitatorDashboard({super.key}) {
+    print("FacilitatorDashboard: Controller created or retrieved");
+    // Listen to changes in selectedIndex
+    ever(controller.selectedIndex, (value) {
+      print("FacilDashboardController: selectedIndex changed to $value");
+    });
+  }
 
   final List<Widget> screens = const [
     ActiveSessionScreen(),
@@ -27,6 +33,8 @@ class FacilitatorDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("FacilitatorDashboard: build called");
+
     final Size screenSize = MediaQuery.of(context).size;
     final double screenHeight = screenSize.height;
     final double screenWidth = screenSize.width;
@@ -63,12 +71,20 @@ class FacilitatorDashboard extends StatelessWidget {
                             icons: Icons.notifications,
                             ishow: true,
                           ),
-                          SizedBox(width: 6 * widthScaleFactor),
-                          AddOneContainer(
-                            icon: Icons.add,
-                            onTap: () {
-                              Get.toNamed(RouteName.createNewSessionScreen);
-                            },
+                          Row(
+                            children: [
+                              SettingContainer(icons: Icons.settings),
+                              SizedBox(width: 6 * widthScaleFactor),
+                              SettingContainer(
+                                icons: Icons.notifications,
+                                ishow: true,
+                              ),
+                              SizedBox(width: 6 * widthScaleFactor),
+                              AddOneContainer(icon: Icons.add, onTap: () {
+                                print("AddOneContainer tapped, navigating to createNewSessionScreen");
+                                Get.toNamed(RouteName.createNewSessionScreen);
+                              }),
+                            ],
                           ),
                         ],
                       ),
@@ -106,26 +122,28 @@ class FacilitatorDashboard extends StatelessWidget {
                           ),
                         ],
                       ),
+
                       MainText(
                         text: "manage_sessions".tr,
                         fontSize: 14 * heightScaleFactor,
                         height: 1.4,
                       ),
                       SizedBox(height: 23 * heightScaleFactor),
-                      FacilDashBoardStackContainer(
-                        heightScaleFactor: heightScaleFactor,
-                        widthScaleFactor: widthScaleFactor,
-                        controller: controller,
-                      ),
+                      Obx(() {
+                        print("Obx: Building FacilDashBoardStackContainer with selectedIndex: ${controller.selectedIndex.value}");
+                        return FacilDashBoardStackContainer(
+                          heightScaleFactor: heightScaleFactor,
+                          widthScaleFactor: widthScaleFactor,
+                          controller: controller,
+                        );
+                      }),
                     ],
                   ),
                 ),
-                GetBuilder<FacilDashboardController>(
-                  builder: (controller) {
-                    final currentIndex = controller.selectedIndex.value;
-                    return screens[currentIndex];
-                  },
-                ),
+                Obx(() {
+                  print("Obx: Displaying screen at index: ${controller.selectedIndex.value}");
+                  return screens[controller.selectedIndex.value];
+                }),
               ],
             ),
           ),

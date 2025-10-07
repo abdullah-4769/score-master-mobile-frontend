@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  
+
+
+
+
 
   static const languageColor =Color(0xff00233B);
   static const forwardColor =Color(0xff8DC046);

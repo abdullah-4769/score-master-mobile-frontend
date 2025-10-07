@@ -4,6 +4,94 @@ class AppTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+
+          // Question Types and Labels
+          'question': 'Question',
+          'no_options_available': 'No options available',
+          'select_options_in_order': 'Select options in the correct order',
+          'your_sequence': 'Your Sequence',
+          'clear_sequence': 'Clear Sequence',
+
+// Input Placeholders
+          'share_thought_process': 'Share your thought process here...',
+          'explain_reasoning': 'Explain Your Reasoning',
+
+// Phase Navigation
+          'current_phase': 'Current Phase',
+          'remaining': 'Remaining',
+          'pause': 'Pause',
+          'next_phase': 'Next Phase',
+          'back': 'Back',
+          'previous': 'Previous',
+          'submit_response': 'Submit Response',
+
+// Phase Related
+          'strategy_building': 'Strategy Building',
+
+// Status Messages
+          'input_updated': 'Input Updated',
+          'response_recorded': 'Your response has been recorded',
+
+// Team/Session Info
+          'team_alpha': 'Team Alpha',
+          'team_building_workshop': 'Team Building Workshop',
+          'team_collab_phase': 'Team Collaboration Phase',
+
+// Question Type Scenarios
+          'scenario_description': 'Scenario description will appear here',
+
+// Additional strings that might be referenced
+          'phases': 'Phases',
+          'mcq': 'MCQ',
+          'puzzle': 'PUZZLE',
+          'open_ended': 'OPEN-ENDED',
+          'simulation': 'SIMULATION',
+          'points': 'points',
+          "completed": "Completed",
+          "active": "Active",
+          "pending": "Pending",
+          "no_phases_available": "No phases available",
+          "phase_name_placeholder": "{phaseName}",
+          "completed_with_time": "Completed • {time} min",
+          "active_with_time": "Active • {time}",
+          "upcoming_with_time": "Upcoming • {time} min",
+          "scenario": "Scenario",
+          "question": "Question",
+          "scenario_description": "No scenario available",
+          "question_description": "No question available",
+          "no_options_available": "No options available",
+          "share_thought_process": "Share your thought process",
+          "team_alpha": "Team Alpha",
+          "team_building_workshop": "Team Building Workshop",
+          "current_phase": "Current Phase",
+          "strategy_building": "Strategy Building",
+          "team_collab_phase": "Team Collaboration Phase",
+          "back": "Back",
+          "pause": "Pause",
+          "next_phase": "Next Phase",
+          "submit_response": "Submit Response",
+          "previous": "Previous",
+          "explain_reasoning": "Explain Reasoning",
+          "phase_completed": "Phase Completed",
+          "phase_paused": "Phase Paused",
+          "phase_changed": "Phase Changed",
+          "cannot_go_back": "Cannot Go Back",
+          "session_completed": "Session Completed",
+          "option_selected": "Option Selected",
+          "selected_option": "Selected: {option}",
+          "phase_inactive": "Phase Inactive",
+          "cannot_select_options": "Cannot select options for this phase.",
+          "input_updated": "Input Updated",
+          "response_recorded": "Response recorded.",
+          "starts_at": "Starts at",
+          "starts_soon": "Starts Soon",
+          "no_sessions_available": "No sessions available",
+          "players": "players",
+          "join_session": "Join Session",
+          "scheduled": "Scheduled",
+          "active_sessions": "Active Sessions",
+          "scheduled_sessions": "Scheduled Sessions",
+
           "phases":" Phases",
           "total_game_time_minutes": "Total Game Time (Minutes)",
           "enter_total_time": "Enter total time",
@@ -13,7 +101,7 @@ class AppTranslations extends Translations {
           "error_total_time": "Total time cannot exceed game limit",
           "edit_phases": "Edit Phases",
           "total_game_time": "Total Game Time: @time minutes",
-          "no_facilitators_selected":"No Facilitator Found",
+          "no_facilitators_selected":"No Facilitator Selected Yet",
           "search_facilitator" :"Search Facilitator",
           "add_facilitators": "Add facilitators from list",
           "signup": "Sign Up",

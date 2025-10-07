@@ -38,7 +38,7 @@ import 'package:scorer/view/playerfolder/player_leaderboard_screen.dart';
 import 'package:scorer/view/playerfolder/player_login_play_side.dart';
 import 'package:scorer/view/playerfolder/submit_response_Screen.dart';
 import 'package:scorer/view/playerfolder/submit_response_Screen2.dart';
-import '../view/adminside/phases_create_game.dart';
+
 import '../view/playerfolder/player_registration_screen.dart';
 
 // import 'package:scorer/view/startscreen/evaluate_response_Screen2.dart';
@@ -51,17 +51,17 @@ class AppRoutes {
 
 
   static getAppRoutes() => [
-  GetPage(
-  name: RouteName.playerRegistrationScreen,
-  page: () => PlayerRegistrationScreen(),
-  transition: Transition.cupertino,
-  ),
-
     GetPage(
-      name: RouteName.phaseCreateGame,
-      page: () => PhasesCreateGame(),
+      name: RouteName.playerRegistrationScreen,
+      page: () => PlayerRegistrationScreen(),
       transition: Transition.cupertino,
     ),
+    //
+    // GetPage(
+    //   name: RouteName.phaseCreateGame,
+    //   page: () => PhasesCreateGame(),
+    //   transition: Transition.cupertino,
+    // ),
 
     GetPage(
       name: RouteName.splashScreen,
@@ -220,11 +220,11 @@ class AppRoutes {
       page: () => PlayerDashboard(),
       transition: Transition.cupertino,
     ),
-    GetPage(
-      name: RouteName.playerLeaderBoardScreen2,
-      page: () => PlayerLeaderBoardScreen2(),
-      transition: Transition.cupertino,
-    ),
+    // GetPage(
+    //   name: RouteName.playerLeaderBoardScreen2,
+    //   page: () => PlayerLeaderBoardScreen2(),
+    //   transition: Transition.cupertino,
+    // ),
     GetPage(
       name: RouteName.playerLeaderboardScreen,
       page: () => PlayerLeaderboardScreen(),

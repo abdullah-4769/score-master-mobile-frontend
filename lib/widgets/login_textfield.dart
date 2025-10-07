@@ -8,7 +8,10 @@ class LoginTextfield extends StatelessWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final ValueChanged<String>? onChanged; // ✅ Added here
+  final ValueChanged<String>? onChanged;
+  final TextInputType? keyboardType;
+  final TextInputAction? inputAction;
+
 
   const LoginTextfield({
     super.key,
@@ -18,7 +21,10 @@ class LoginTextfield extends StatelessWidget {
     this.isPassword = false,
     this.controller,
     this.validator,
-    this.onChanged, // ✅ Added here
+    this.onChanged,
+    this.keyboardType,
+    this.inputAction,
+
     required bool ishow,
   });
 
@@ -47,7 +53,10 @@ class LoginTextfield extends StatelessWidget {
         controller: controller,
         obscureText: isPassword,
         validator: validator,
-        onChanged: onChanged, // ✅ Hooked up
+        onChanged: onChanged,
+        keyboardType: keyboardType,
+        textInputAction: inputAction,
+
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 10 * widthScaleFactor),
           hintText: text,

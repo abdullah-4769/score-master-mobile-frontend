@@ -1,114 +1,5 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                          
-
-
-
-
-
-
-
-
-
-
-
-
-                          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:scorer/constants/appcolors.dart';
 import 'package:scorer/widgets/main_text.dart';
 import 'package:scorer/widgets/useable_container.dart';
@@ -133,11 +24,10 @@ class CustomStratgyContainer extends StatelessWidget {
   final double? fontSize;
   final double? mainHeight;
   final double? spaceHeight2;
-  final int?flex1;
-  final int?flex;
-  final double?fontSize2;
-  final double?fontSize3;
-  
+  final int? flex1;
+  final int? flex;
+  final double? fontSize2;
+  final double? fontSize3;
 
   const CustomStratgyContainer({
     super.key,
@@ -159,22 +49,29 @@ class CustomStratgyContainer extends StatelessWidget {
     this.extra,
     this.fontSize,
     this.mainHeight,
-    this.spaceHeight2, this.flex1, this.flex, this.fontSize2, this.fontSize3,
-    
+    this.spaceHeight2,
+    this.flex1,
+    this.flex,
+    this.fontSize2,
+    this.fontSize3,
   });
 
   @override
   Widget build(BuildContext context) {
+    // === Setup Scaling Factors ===
     final screenWidth = MediaQuery.of(context).size.width;
-    final baseWidth = screenWidth * 0.9;
-    final baseHeight = baseWidth * (91 / 334);
-    final horizontalPadding = baseWidth * (10 / 334);
-    final verticalPadding = baseHeight * (10 / 91);
-    final iconSize = baseHeight * (24 / 91);
-    final textFontSize = baseWidth * 0.039;
-    final smallContainerWidth = baseWidth * (70 / 334);
-    final progressBarHeight = baseHeight * (5 / 91);
-    final progressBarWidth = baseWidth - (horizontalPadding * 2);
+    final baseWidth = (screenWidth * 0.9).clamp(300.0, 500.0); // Constrain width
+    final baseHeight = (baseWidth * (91 / 334)).clamp(50.0, 100.0); // Constrain height
+    final horizontalPadding = (baseWidth * (10 / 334)).clamp(8.0, 12.0);
+    final verticalPadding = (baseHeight * (10 / 91)).clamp(6.0, 10.0);
+    final iconSize = (baseHeight * (24 / 91)).clamp(18.0, 24.0);
+    final textFontSize = (baseWidth * 0.039).clamp(12.0, 16.0);
+    final smallContainerWidth = (baseWidth * (70 / 334)).clamp(60.0, 80.0);
+    final progressBarHeight = (baseHeight * (5 / 91)).clamp(4.0, 6.0);
+
+    // Ensure flex values are non-negative and reasonable
+    final effectiveFlex = (flex ?? 3).clamp(0, 3);
+    final effectiveFlex1 = (flex1 ?? 1).clamp(0, 3);
 
     return Container(
       width: containerWidth ?? baseWidth,
@@ -214,8 +111,13 @@ class CustomStratgyContainer extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MainText(text: text1, fontSize:fontSize2?? textFontSize),
-                        MainText(text: text2, fontSize: textFontSize, color: AppColors.teamColor, height: 1),
+                        MainText(text: text1, fontSize: fontSize2 ?? textFontSize),
+                        MainText(
+                          text: text2,
+                          fontSize: textFontSize,
+                          color: AppColors.teamColor,
+                          height: 1,
+                        ),
                       ],
                     ),
                   ],
@@ -239,31 +141,35 @@ class CustomStratgyContainer extends StatelessWidget {
                 fontSize: fontSize ?? textFontSize,
               ),
             SizedBox(height: spaceHeight2 ?? baseHeight * 0.13),
-            Row(
-              children: [
-                Expanded(
-                  flex:flex?? 3,
-                  child: Container(
-                    height: progressBarHeight,
-                    width: width1 ?? progressBarWidth,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: largeConatiner,
+            // Progress Bar
+            Container(
+              constraints: BoxConstraints(
+                maxWidth: baseWidth - (horizontalPadding * 2), // Ensure bar stays within container
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: effectiveFlex,
+                    child: Container(
+                      height: progressBarHeight,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: largeConatiner,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex:flex1?? 1,
-                  child: Container(
-                    height: progressBarHeight,
-                    width: width2 ?? 0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: AppColors.greyColor,
+                  Expanded(
+                    flex: effectiveFlex1,
+                    child: Container(
+                      height: progressBarHeight,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.greyColor,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

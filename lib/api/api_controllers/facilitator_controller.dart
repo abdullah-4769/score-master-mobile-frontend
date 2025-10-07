@@ -10,11 +10,9 @@ class FacilitatorsController extends GetxController {
 
   @override
   void onInit() {
-  super.onInit();
-  print("🚀 FacilitatorsController initialized!");
-  fetchFacilitatorsFromApi();
+    super.onInit();
+    fetchFacilitatorsFromApi();
   }
-
 
   /// Fetch data from API (get all facilitators once)
   Future<void> fetchFacilitatorsFromApi() async {

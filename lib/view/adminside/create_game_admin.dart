@@ -381,7 +381,7 @@ class _Game2ScreenState extends State<Game2Screen> {
 
                   SizedBox(height: 20 * scaleFactor),
 
-             // PhaseTimeSlider(label: '', value: null, totalTime: null, allValues: [],),
+                  // PhaseTimeSlider(label: '', value: null, totalTime: null, allValues: [],),
                   SizedBox(height: 20 * scaleFactor),
                   LoginButton(
                     fontSize: 20.sp,
@@ -393,58 +393,124 @@ class _Game2ScreenState extends State<Game2Screen> {
                   SizedBox(height: 20 * scaleFactor),
 
 
+                  GameLogicSetupContainer(scaleFactor: scaleFactor,),
+                  SizedBox(height: 20 * scaleFactor),
+                  //
+                  // Container(
+                  //   width: double.infinity,
+                  //   padding: EdgeInsets.all(16 * scaleFactor),
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.blue.shade50,
+                  //     border: Border.all(color: Colors.blue.shade200),
+                  //     borderRadius: BorderRadius.circular(12 * scaleFactor),
+                  //   ),
+                  //   child: Column(
+                  //     children: [
+                  //       Text(
+                  //         "Test Phase Loading",
+                  //         style: TextStyle(
+                  //           fontSize: 14 * scaleFactor,
+                  //           fontWeight: FontWeight.bold,
+                  //           color: Colors.blue.shade700,
+                  //         ),
+                  //       ),
+                  //       SizedBox(height: 8 * scaleFactor),
+                  //       ElevatedButton(
+                  //         onPressed: () {
+                  //           // Test with your existing game ID 1
+                  //           print("🧪 Testing: Loading phases for game ID 1");
+                  //           createGameController.loadExistingGame(1);
+                  //         },
+                  //         style: ElevatedButton.styleFrom(
+                  //           backgroundColor: Colors.blue,
+                  //           padding: EdgeInsets.symmetric(
+                  //             horizontal: 20 * scaleFactor,
+                  //             vertical: 10 * scaleFactor,
+                  //           ),
+                  //         ),
+                  //         child: Obx(() => createGameController.isFetchingPhases.value
+                  //             ? Row(
+                  //           mainAxisSize: MainAxisSize.min,
+                  //           children: [
+                  //             SizedBox(
+                  //               width: 16,
+                  //               height: 16,
+                  //               child: CircularProgressIndicator(
+                  //                 strokeWidth: 2,
+                  //                 color: Colors.white,
+                  //               ),
+                  //             ),
+                  //             SizedBox(width: 8),
+                  //             Text("Loading..."),
+                  //           ],
+                  //         )
+                  //             : Text(
+                  //           "Load Game ID 1 Phases",
+                  //           style: TextStyle(color: Colors.white),
+                  //         )),
+                  //       ),
+                  //       SizedBox(height: 8 * scaleFactor),
+                  //       Obx(() => Text(
+                  //         "Current Game ID: ${createGameController.currentGameId.value ?? 'None'}",
+                  //         style: TextStyle(fontSize: 12 * scaleFactor, color: Colors.grey.shade600),
+                  //       )),
+                  //     ],
+                  //   ),
+                  // ),
 
-                  Obx(() {
-                    if (createGameController.phases.isEmpty) {
-                      return SizedBox();
-                    }
+                  SizedBox(height: 20 * scaleFactor),
 
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BoldText(
-                          text: "Game Phases",
-                          fontSize: 16 * scaleFactor,
-                          selectionColor: AppColors.blueColor,
-                        ),
-                        SizedBox(height: 10 * scaleFactor),
-
-                        ...createGameController.phases.map((phase) {
-                          return Container(
-                            margin: EdgeInsets.symmetric(vertical: 8 * scaleFactor),
-                            padding: EdgeInsets.all(12 * scaleFactor),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade400),
-                              borderRadius: BorderRadius.circular(12 * scaleFactor),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                BoldText(
-                                  text: phase.name,
-                                  fontSize: 14 * scaleFactor,
-                                  selectionColor: AppColors.forwardColor,
-                                ),
-                                SizedBox(height: 6),
-                                Text("Duration: ${phase.timeDuration} min"),
-                                Text("Stages: ${phase.stagesCount}"),
-                                Text("Challenges: ${phase.challengeTypes.join(", ")}"),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: IconButton(
-                                    icon: Icon(Icons.edit, color: AppColors.forwardColor),
-                                    onPressed: () {
-                                      // TODO: open edit later
-                                    },
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        }).toList(),
-                      ],
-                    );
-                  }),
+                  // Obx(() {
+                  //   if (createGameController.phases.isEmpty) {
+                  //     return SizedBox();
+                  //   }
+                  //
+                  //   return Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       BoldText(
+                  //         text: "Game Phases",
+                  //         fontSize: 16 * scaleFactor,
+                  //         selectionColor: AppColors.blueColor,
+                  //       ),
+                  //       SizedBox(height: 10 * scaleFactor),
+                  //
+                  //       ...createGameController.phases.map((phase) {
+                  //         return Container(
+                  //           margin: EdgeInsets.symmetric(vertical: 8 * scaleFactor),
+                  //           padding: EdgeInsets.all(12 * scaleFactor),
+                  //           decoration: BoxDecoration(
+                  //             border: Border.all(color: Colors.grey.shade400),
+                  //             borderRadius: BorderRadius.circular(12 * scaleFactor),
+                  //           ),
+                  //           child: Column(
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+                  //             children: [
+                  //               BoldText(
+                  //                 text: phase.name,
+                  //                 fontSize: 14 * scaleFactor,
+                  //                 selectionColor: AppColors.forwardColor,
+                  //               ),
+                  //               SizedBox(height: 6),
+                  //               Text("Duration: ${phase.timeDuration} min"),
+                  //               Text("Stages: ${phase.stagesCount}"),
+                  //               Text("Challenges: ${phase.challengeTypes.join(", ")}"),
+                  //               Align(
+                  //                 alignment: Alignment.centerRight,
+                  //                 child: IconButton(
+                  //                   icon: Icon(Icons.edit, color: AppColors.forwardColor),
+                  //                   onPressed: () {
+                  //                     // TODO: open edit later
+                  //                   },
+                  //                 ),
+                  //               )
+                  //             ],
+                  //           ),
+                  //         );
+                  //       }).toList(),
+                  //     ],
+                  //   );
+                  // }),
 
 
 
@@ -477,7 +543,7 @@ class _Game2ScreenState extends State<Game2Screen> {
                           children: [
 
 
-                            GameLogicSetupContainer(scaleFactor: scaleFactor),
+
 
 
                             SizedBox(height: 10 * scaleFactor),
@@ -487,19 +553,19 @@ class _Game2ScreenState extends State<Game2Screen> {
                               onSelectionChanged: (selectedList) {
                                 // ✅ store in controller or pass to API
                                 print("Selected Challenge Types: $selectedList");
-                               // controller.challengeTypes.value = selectedList;
+                                // controller.challengeTypes.value = selectedList;
                               },
                             ),
                             SizedBox(height: 10 * scaleFactor),
 
 
                             //CustomContainer(scaleFactor: scaleFactor),
-                           // SizedBox(height: 24 * scaleFactor),
+                            // SizedBox(height: 24 * scaleFactor),
 
-                           // SizedBox(height: 16 * scaleFactor),
+                            // SizedBox(height: 16 * scaleFactor),
                             BadgeWidget(
                               onChanged: (badge, score) {
-                               sendToApi(badge, score);
+                                sendToApi(badge, score);
                               },
                             ),
 

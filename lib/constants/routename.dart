@@ -35,7 +35,7 @@ class RouteName {
 
   static const String adminDashboard='/AdminDashboard';
 
-  static const String adminOverviewOptionScreens='/AdminOverviewOptionScreens';
+  static const String adminOverviewOptionScreens='/c';
   static const String createNewSessionHeader='/CreateNewSessionHeader';
   static const String gameScreenAdminSide='/GameScreenAdminSide';
   static const String game2Screen='/Game2Screen';
@@ -47,7 +47,7 @@ class RouteName {
 
   static const String playerDashboardScreen2='/PlayerDashboardScreen2';
   static const String playerDashboard='/PlayerDashboard';
-  static const String playerLeaderBoardScreen2='/PlayerLeaderBoardScreen2';
+  // static const String playerLeaderBoardScreen2='/PlayerLeaderBoardScreen2';
   static const String playerLeaderboardScreen='/PlayerLeaderboardScreen';
   static const String playerLoginPlaySide='/PlayerLoginPlaySide';
   static const String submitResponseScreen='/SubmitResponseScreen';

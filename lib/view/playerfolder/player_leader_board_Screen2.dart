@@ -35,10 +35,10 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                   children: [
                     SizedBox(height: 13,),
                     Padding(
-                      
+
                       padding: EdgeInsets.symmetric(
                         horizontal: screenWidth * 0.05,
-                        
+
                       ),
                       child: Row(
                         children: [
@@ -52,7 +52,9 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.03), 
+
+
+                    SizedBox(height: screenHeight * 0.03),
                     Obx(
                       () => Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +84,7 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.02), 
+                    SizedBox(height: screenHeight * 0.02),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -102,21 +104,21 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: screenHeight * 0.025), 
+                    SizedBox(height: screenHeight * 0.025),
                     Obx(
                       () => CreateContainer(
                         text: isTeamSelected.value ? "your_team_rank_2nd".tr : "your_rank_2nd".tr,
-                        
+
                         width: isTeamSelected.value ? screenWidth * 0.45 : screenWidth * 0.33,
                       ),
                     ),
-                    SizedBox(height: screenHeight * 0.1), 
+                    SizedBox(height: screenHeight * 0.1),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.08), 
+                      padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.08),
                       child: Column(
                         children: [
-                          Obx(() => PlayersRow(isTeamSelected: isTeamSelected.value)),
-                          SizedBox(height: screenHeight * 0.035), 
+                          Obx(() => PlayersRow(isTeamSelected: isTeamSelected.value, topThree: [],)),
+                          SizedBox(height: screenHeight * 0.035),
                           Obx(
                             () => PlayersContainers(
                               text1: "1",
@@ -191,7 +193,7 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                             ishow: true,
                             image: Appimages.submit,
                           ),
-                          SizedBox(height: screenHeight * 0.012), 
+                          SizedBox(height: screenHeight * 0.012),
                           LoginButton(
                             fontSize: 19,
 
@@ -200,14 +202,14 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                             color: AppColors.redColor,
                             image: Appimages.move,
                           ),
-                          SizedBox(height: screenHeight * 0.012), 
+                          SizedBox(height: screenHeight * 0.012),
                           LoginButton(
                             fontSize: 19,
                             text: "export_data".tr,
                             ishow: true,
                             image: Appimages.export,
                           ),
-                          SizedBox(height: screenHeight * 0.04), 
+                          SizedBox(height: screenHeight * 0.04),
                         ],
                       ),
                     ),
@@ -215,7 +217,7 @@ class PlayerLeaderBoardScreen2 extends StatelessWidget {
                 ),
               ),
               Positioned(
-                
+
                 top: screenHeight * 0.25,
                 left: 0,
                 child:BackStackContainer()

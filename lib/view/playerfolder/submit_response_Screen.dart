@@ -22,9 +22,7 @@ class SubmitResponseScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    
-    
-    const double baseWidth = 375.0; 
+    const double baseWidth = 375.0;
     final double scaleFactor = screenWidth / baseWidth;
 
     return Scaffold(
@@ -84,7 +82,7 @@ class SubmitResponseScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 10 * scaleFactor),
                     BoldText(
-                       text: "response_submitted".tr,
+                      text: "response_submitted".tr,
                       fontSize: 16 * scaleFactor,
                       selectionColor: AppColors.blueColor,
                     ),
@@ -98,7 +96,9 @@ class SubmitResponseScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 20 * scaleFactor),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30 * scaleFactor),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30 * scaleFactor,
+                      ),
                       child: Container(
                         width: 338 * scaleFactor,
                         decoration: BoxDecoration(
@@ -109,32 +109,34 @@ class SubmitResponseScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24 * scaleFactor),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20 * scaleFactor),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20 * scaleFactor,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(height: 30 * scaleFactor),
                               BoldText(
-                               text: "your_submission".tr,
+                                text: "your_submission".tr,
                                 selectionColor: AppColors.blueColor,
                                 fontSize: 16 * scaleFactor,
                               ),
                               SizedBox(height: 15 * scaleFactor),
                               MainText(
                                 height: 1.5,
-                               text: "mountain_resort".tr,
+                                text: "mountain_resort".tr,
                                 fontSize: 13 * scaleFactor,
                               ),
                               SizedBox(height: 15 * scaleFactor),
                               BoldText(
-                               text: "reasoning".tr,
+                                text: "reasoning".tr,
                                 selectionColor: AppColors.redColor,
                                 fontSize: 16 * scaleFactor,
                               ),
                               SizedBox(height: 10 * scaleFactor),
                               MainText(
                                 text: "mountain_resort_reason".tr,
-                                
+
                                 fontSize: 13 * scaleFactor,
                                 height: 1.5,
                               ),
@@ -142,7 +144,6 @@ class SubmitResponseScreen extends StatelessWidget {
                               UseableTextrow(
                                 color: AppColors.forwardColor,
                                 text: "submitted_at".tr,
-                               
                               ),
                               SizedBox(height: 20 * scaleFactor),
                             ],
@@ -151,8 +152,7 @@ class SubmitResponseScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20 * scaleFactor),
-                    
-                    
+
                     AdminTeamProgress(
                       contentWidth: screenWidth * 0.9,
                       screenHeight: screenHeight,
@@ -166,20 +166,20 @@ class SubmitResponseScreen extends StatelessWidget {
                       width: 100 * scaleFactor,
                     ),
                     BoldText(
-  text: "waiting_for_team".tr,
-  fontSize: 16 * scaleFactor,
-  selectionColor: AppColors.blueColor,
-),
+                      text: "waiting_for_team".tr,
+                      fontSize: 16 * scaleFactor,
+                      selectionColor: AppColors.blueColor,
+                    ),
                     SizedBox(height: 10 * scaleFactor),
-                  
-Center(
-  child: MainText(
-    height: 1.2,
-    text: "waiting_for_member".tr,
-    fontSize: 14 * scaleFactor,
-    textAlign: TextAlign.center,
-  ),
-),
+
+                    Center(
+                      child: MainText(
+                        height: 1.2,
+                        text: "waiting_for_member".tr,
+                        fontSize: 14 * scaleFactor,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                     SizedBox(height: 10 * scaleFactor),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -214,17 +214,19 @@ Center(
                     ),
                     SizedBox(height: 20 * scaleFactor),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30 * scaleFactor),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30 * scaleFactor,
+                      ),
                       child: Column(
                         children: [
                           CustomStratgyContainer(
-fontSize2:  ResponsiveFont.getFontSize(),
+                            fontSize2: ResponsiveFont.getFontSize(),
 
-                           fontSize3: 10,
+                            fontSize3: 10,
                             width3: 68 * scaleFactor,
                             iconContainer: AppColors.forwardColor,
                             icon: Icons.check,
-                            text1:"phase1_strategy".tr, 
+                            text1: "phase1_strategy".tr,
                             text2: "Completed • 20 min",
                             text3: "completed".tr,
                             smallContainer: AppColors.forwardColor,
@@ -234,14 +236,14 @@ fontSize2:  ResponsiveFont.getFontSize(),
                           ),
                           SizedBox(height: 10 * scaleFactor),
                           CustomStratgyContainer(
-fontSize2:  ResponsiveFont.getFontSize(),
-fontSize3: 10,
+                            fontSize2: ResponsiveFont.getFontSize(),
+                            fontSize3: 10,
                             width3: 68 * scaleFactor,
                             iconContainer: AppColors.forwardColor,
                             icon: Icons.check,
-                            text1:  "phase2_strategy".tr,
+                            text1: "phase2_strategy".tr,
                             text2: "Active • 30 min",
-                          text3: "completed".tr,
+                            text3: "completed".tr,
                             smallContainer: AppColors.forwardColor,
                             largeConatiner: AppColors.forwardColor,
                             flex: 4,
@@ -249,12 +251,12 @@ fontSize3: 10,
                           ),
                           SizedBox(height: 10 * scaleFactor),
                           CustomStratgyContainer(
-fontSize2:  ResponsiveFont.getFontSize(),
-fontSize3: 10,
+                            fontSize2: ResponsiveFont.getFontSize(),
+                            fontSize3: 10,
                             width3: 68 * scaleFactor,
                             iconContainer: AppColors.watchColor,
                             icon: Icons.watch_later,
-                            text1:  "phase3_implementation".tr,
+                            text1: "phase3_implementation".tr,
                             text2: "Upcoming • 15 min",
                             text3: "pending".tr,
                             smallContainer: AppColors.watchColor,
@@ -264,7 +266,8 @@ fontSize3: 10,
                           ),
                           SizedBox(height: 10 * scaleFactor),
                           CustomStratgyContainer(
-fontSize2:  ResponsiveFont.getFontSize(),fontSize3: 10,
+                            fontSize2: ResponsiveFont.getFontSize(),
+                            fontSize3: 10,
                             width3: 68 * scaleFactor,
 
                             iconContainer: AppColors.watchColor,
@@ -279,8 +282,9 @@ fontSize2:  ResponsiveFont.getFontSize(),fontSize3: 10,
                           ),
                           SizedBox(height: 30 * scaleFactor),
                           LoginButton(
-                        onTap: () => Get.toNamed(RouteName.submitResponseScreen2),
-fontSize: 20,
+                            onTap: () =>
+                                Get.toNamed(RouteName.submitResponseScreen2),
+                            fontSize: 20,
                             text: "review_ai_score".tr,
                             color: AppColors.forwardColor,
                             ishow: true,

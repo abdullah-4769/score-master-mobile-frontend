@@ -1,13 +1,19 @@
 class LoginResponse {
   final String token;
   final User user;
+  final int? sessionId; // NEW - Optional for facilitators
 
-  LoginResponse({required this.token, required this.user});
+  LoginResponse({
+    required this.token,
+    required this.user,
+    this.sessionId, // NEW
+  });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
       token: json['token'],
       user: User.fromJson(json['user']),
+      sessionId: json['sessionId'], // NEW - Will be null if not present
     );
   }
 }

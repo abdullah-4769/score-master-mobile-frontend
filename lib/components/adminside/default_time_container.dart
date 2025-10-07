@@ -22,15 +22,15 @@ class DefaultTimeContainer extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(20 * scaleFactor),
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.greyColor, width: 1.7 * scaleFactor),
+        border: Border.all(color: AppColors.forwardColor.withOpacity(0.1), width: 1.7 * scaleFactor),
         borderRadius: BorderRadius.circular(24 * scaleFactor),
         color: Colors.grey.shade100.withValues(alpha: 0.5),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10 * scaleFactor,
-            offset: Offset(0, 5 * scaleFactor),
-          )
+          // BoxShadow(
+          //   color: Colors.black12,
+          //   blurRadius: 10 * scaleFactor,
+          //   offset: Offset(0, 5 * scaleFactor),
+          // )
         ],
       ),
       child: Column(

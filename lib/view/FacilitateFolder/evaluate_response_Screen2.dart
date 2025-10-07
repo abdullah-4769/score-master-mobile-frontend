@@ -120,7 +120,7 @@ class EvaluateResponseScreen2 extends StatelessWidget {
                               SizedBox(height: 20 * heightScaleFactor),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   BoldText(
                                     text: "your_evaluation".tr,
@@ -177,7 +177,7 @@ class EvaluateResponseScreen2 extends StatelessWidget {
                                   ),
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(height: 20 * heightScaleFactor),
                                       BoldText(

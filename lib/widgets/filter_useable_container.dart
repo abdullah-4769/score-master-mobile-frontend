@@ -39,7 +39,6 @@ class FilterUseableContainer extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 23 * scaleFactor),
           child: Row(
             children: [
-              // ✅ Circle behaves like checkbox now
               Container(
                 height: 24 * scaleFactor,
                 width: 24 * scaleFactor,
@@ -48,7 +47,7 @@ class FilterUseableContainer extends StatelessWidget {
                     color: isSelected
                         ? AppColors.forwardColor
                         : AppColors.greyColor,
-                    width: 1.5 * scaleFactor,
+                    width: isSelected ? 0 : 1.5 * scaleFactor,
                   ),
                   shape: BoxShape.circle,
                   color: isSelected ? AppColors.forwardColor : Colors.transparent,
@@ -75,7 +74,7 @@ class FilterUseableContainer extends StatelessWidget {
 }
 
 class FilterSelector extends StatefulWidget {
-  final Function(List<String> selectedValues) onSelected;
+  final Function(String selectedValue) onSelected;
 
   const FilterSelector({super.key, required this.onSelected});
 
@@ -84,8 +83,7 @@ class FilterSelector extends StatefulWidget {
 }
 
 class _FilterSelectorState extends State<FilterSelector> {
-  // ✅ Use list instead of single string
-  List<String> selectedOptions = [];
+  String selected = "manual"; // default selected
 
   final List<String> options = ["manual", "ai", "mixed"];
 
@@ -93,21 +91,16 @@ class _FilterSelectorState extends State<FilterSelector> {
   Widget build(BuildContext context) {
     return Column(
       children: options.map((option) {
-        final isSelected = selectedOptions.contains(option);
         return Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: FilterUseableContainer(
-            isSelected: isSelected,
+            isSelected: selected == option,
             text: option,
             onTap: () {
               setState(() {
-                if (isSelected) {
-                  selectedOptions.remove(option); // uncheck
-                } else {
-                  selectedOptions.add(option); // check
-                }
+                selected = option;
               });
-              widget.onSelected(selectedOptions); // ✅ return list of selected
+              widget.onSelected(option); // ✅ Pass selected value to parent/API
             },
           ),
         );
